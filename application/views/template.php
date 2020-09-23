@@ -110,7 +110,7 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('monitoring_control') ?>">
+							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
 								<p>Management User</p>
 							</a>

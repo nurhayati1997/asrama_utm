@@ -56,8 +56,9 @@
 								<table id="myTable" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>NAMA JASA</th>
-											<th>HARGA JASA</th>
+											<th>Username</th>
+											<th>Jabatan</th>
+											<th>Level</th>
 											<th style="width: 10%">AKSI</th>
 										</tr>
 									</thead>
@@ -179,7 +180,7 @@
 	</div>
 </div>
 
-<!-- <script>
+<script>
 	$(document).ready(function() {
 		// $("#success-alert").hide();
 		$("#tambah_button").click(function showAlert() {
@@ -250,52 +251,29 @@
 		$('#myTable').DataTable({
 			destroy: true,
 			"ajax": {
-				"url": "<?php echo site_url("barang/tampil") ?>",
+				"url": "<?php echo site_url("management_control/tampil") ?>",
 				"dataSrc": ""
 			},
 			"columns": [{
-					"data": "kode_barang"
+					"data": "username"
 				},
 				{
-					"data": "jenis",
-					"render": function(data, type, row) {
-						if (data == 0) {
-							return "Sepeda Motor"
-						} else {
-							return "Mobil"
-						}
-
-					}
+					"data": "jabatan"
 				},
 				{
-					"data": "nama_barang"
+					"data": "level"
 				},
 				{
-					"data": "stok_barang"
-				},
-				{
-					"data": "distributor"
-				},
-				{
-					"data": "harga_kulak"
-				},
-				{
-					"data": "harga_jual"
-				},
-				{
-					"data": "id_barang",
+					"data": "id",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
-						var html = "";
-						if (row.hapus == 0) {
-							html += '<div class="form-button-action">' +
-								'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
-								'<i class="fa fa-edit"></i>' +
-								'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
-								'<i class="fa fa-times"></i>' +
-								'</button>' +
-								'</div>';
-						}
+						var html = '<div class="form-button-action">' +
+							'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
+							'<i class="fa fa-edit"></i>' +
+							'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
+							'<i class="fa fa-times"></i>' +
+							'</button>' +
+							'</div>';
 
 						return html
 					}
@@ -309,7 +287,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>barang/ubah_list',
+			url: '<?= base_url() ?>management_control/ubah_list',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -346,7 +324,7 @@
 				'&distributor=' + document.getElementById("ubah_distributor").value + '&satuan=' + document.getElementById("ubah_satuan").value +
 				'&jual=' + document.getElementById("ubah_jual").value + '&merk=' + document.getElementById("ubah_merk").value +
 				'&stok=' + document.getElementById("ubah_stok").value + '&pagu=' + document.getElementById("ubah_pagu").value,
-			url: '<?= base_url() ?>barang/ubah',
+			url: '<?= base_url() ?>management_control/ubah',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -374,7 +352,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>barang/hapus',
+			url: '<?= base_url() ?>management_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -384,4 +362,4 @@
 			}
 		});
 	}
-</script> -->
+</script>

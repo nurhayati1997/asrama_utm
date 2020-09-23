@@ -1,26 +1,69 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class management_control extends CI_Controller {
+class management_control extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('db_model');
+	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		// $this->load->view('welcome_message');
 		$this->template->load('template', 'super_admin');
+	}
+
+	public function tampil()
+	{
+		echo json_encode($this->db_model->get_all("login")->result());
+	}
+
+	// public function tambah()
+	// {
+	// 	$data = [
+	// 		"kode_barang" => $this->input->post("kode", TRUE),
+	// 		"nama_barang" => $this->input->post("nama", TRUE),
+	// 		"distributor" => $this->input->post("distributor", TRUE),
+	// 		"jenis" => $this->input->post("jenis", TRUE),
+	// 		"keterangan" => $this->input->post("ket", TRUE),
+	// 		"lokasi" => $this->input->post("lokasi", TRUE),
+	// 		"merk_barang" => $this->input->post("merk", TRUE),
+	// 		"harga_kulak" => $this->input->post("satuan", TRUE),
+	// 		"harga_jual" => $this->input->post("jual", TRUE),
+	// 		"pagu" => $this->input->post("pagu", TRUE),
+	// 		"hapus" => 0
+	// 	];
+	// 	$this->db_model->insert('tbl_barang', $data);
+	// 	echo json_encode($data);
+	// }
+	// function ubah_list()
+	// {
+	// 	echo json_encode($this->db_model->get_where('tbl_barang', ["id_barang" => $this->input->post('id', TRUE)])->result());
+	// }
+
+	// public function ubah()
+	// {
+	// 	$data = [
+	// 		"kode_barang" => $this->input->post("kode", TRUE),
+	// 		"nama_barang" => $this->input->post("nama", TRUE),
+	// 		"distributor" => $this->input->post("distributor", TRUE),
+	// 		"jenis" => $this->input->post("jenis", TRUE),
+	// 		"keterangan" => $this->input->post("ket", TRUE),
+	// 		"lokasi" => $this->input->post("lokasi", TRUE),
+	// 		"merk_barang" => $this->input->post("merk", TRUE),
+	// 		"harga_kulak" => $this->input->post("satuan", TRUE),
+	// 		"harga_jual" => $this->input->post("jual", TRUE),
+	// 		"stok_barang" => $this->input->post("stok", TRUE),
+	// 		"pagu" => $this->input->post("pagu", TRUE)
+	// 	];
+	// 	$this->db_model->update('tbl_barang', $data, array('id_barang' => $this->input->post('id', TRUE)));
+	// 	echo json_encode($data);
+	// }
+
+	public function hapus()
+	{
+		echo json_encode($this->db_model->delete("login", ['id' => $this->input->post('id', TRUE)]));
 	}
 }

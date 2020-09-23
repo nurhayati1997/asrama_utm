@@ -287,7 +287,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>barang/ubah_list',
+			url: '<?= base_url() ?>management_control/ubah_list',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -324,7 +324,7 @@
 				'&distributor=' + document.getElementById("ubah_distributor").value + '&satuan=' + document.getElementById("ubah_satuan").value +
 				'&jual=' + document.getElementById("ubah_jual").value + '&merk=' + document.getElementById("ubah_merk").value +
 				'&stok=' + document.getElementById("ubah_stok").value + '&pagu=' + document.getElementById("ubah_pagu").value,
-			url: '<?= base_url() ?>barang/ubah',
+			url: '<?= base_url() ?>management_control/ubah',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -352,7 +352,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>barang/hapus',
+			url: '<?= base_url() ?>management_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);

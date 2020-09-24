@@ -47,7 +47,7 @@ class management_control extends CI_Controller
 		$data = [
 			"jurusan" => $this->input->post("jurusan", TRUE),
 			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("username", TRUE),
+			"username" => $this->input->post("user", TRUE),
 			"gedung" => $this->input->post("gedung", TRUE),
 			"kamar" => $this->input->post("kamar", TRUE),
 			"no_hp" => $this->input->post("no", TRUE),
@@ -61,7 +61,7 @@ class management_control extends CI_Controller
 			];
 			$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
 		}
-		echo json_encode($data);
+		echo json_encode("");
 	}
 
 	public function hapus()

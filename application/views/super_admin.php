@@ -181,8 +181,8 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_username">Username</label>
-								<input type="text" class="form-control" id="ubah_username" placeholder="Username">
+								<label for="ubah_user">Username</label>
+								<input type="text" class="form-control" id="ubah_user" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -416,7 +416,7 @@
 				for (var i = 0; i < data.length; i++) {
 					document.getElementById("ubah_jurusan").value = data[i].jurusan;
 					document.getElementById("ubah_jk").value = data[i].jenis_kelamin;
-					document.getElementById("ubah_username").value = data[i].username;
+					document.getElementById("ubah_user").value = data[i].username;
 					document.getElementById("ubah_gedung").value = data[i].gedung;
 					document.getElementById("ubah_kamar").value = data[i].kamar;
 					document.getElementById("ubah_no").value = data[i].no_hp;
@@ -453,10 +453,11 @@
 	}
 
 	function update(id, cek) {
+		// console.log(document.getElementById("ubah_username").value);
 		if (cek == 0) {
 			$.ajax({
 				type: 'POST',
-				data: 'id=' + id + +'&username=' + document.getElementById("ubah_username").value +
+				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
 					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
 					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
 					'&pass=' + document.getElementById("ubah_pass").value +

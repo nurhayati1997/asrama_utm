@@ -76,13 +76,6 @@
 								<i class="fas fa-arrow-circle-right"></i>
 							</a>
 						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a aria-expanded="false">
-								<div class="avatar-sm">
-									<img src="<?= base_url() ?>assets/img/admin.jpg" alt="..." class="avatar-img rounded-circle">
-								</div>
-							</a>
-						</li>
 					</ul>
 				</div>
 			</nav>
@@ -152,87 +145,54 @@
 							</div>
 						</li> -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#monitoring_pengurus">
+							<a data-toggle="collapse" href="#monitoring">
 								<i class="fas fa-desktop"></i>
 								<p>Monitoring</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="monitoring_pengurus">
+							<div class="collapse" id="monitoring">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?= site_url('absensi_rutin_pengurus_control') ?>">
+										<a href="<?= site_url('absensi_rutin_control') ?>">
 											<span class="sub-item">Absensi Rutin</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?= site_url('absensi_nonrutin_pengurus_control') ?>">
-											<span class="sub-item">Absensi Non Rutin</span>
+										<a href="<?= site_url('kegiatan_nonrutin_control') ?>">
+											<span class="sub-item">Kegiatan Non Rutin</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?= site_url('perizinan_pulang_pengurus_control') ?>">
-											<span class="sub-item">Perizinan Pulang</span>
+										<a href="<?= site_url('perizinan_control') ?>">
+											<span class="sub-item">Perizinan</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?= site_url('perizinan_kegiatan_pengurus_control') ?>">
-											<span class="sub-item">Perizinan Kegiatan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('catatan_pengurus_control') ?>">
-											<span class="sub-item">Catatan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('catatan_pengurus_control') ?>">
+										<a href="<?= site_url('pelanggaran_control') ?>">
 											<span class="sub-item">Pelanggaran</span>
 										</a>
+									</li>
+									<li>
+										<a href="<?= site_url('catatan_control') ?>">
+											<span class="sub-item">Catatan</span>
+										</a>
+									</li>a>
 									</li>
 								</ul>
 							</div>
 						</li>
-						<!-- <li class="nav-item">
-							<a data-toggle="collapse" href="#monitoring_warga">
-								<i class="fas fa-layer-group"></i>
-								<p>Monitoring Warga</p>
-								<span class="caret"></span>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Pengaaduan</h4>
+						</li>
+						<li class="nav-item">
+							<a href="<?= site_url('pengaduan_control') ?>">
+								<i class="fas fa-archive"></i>
+								<p>Kritik & Saran</p>
 							</a>
-							<div class="collapse" id="monitoring_warga">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('absensi_rutin_warga_control') ?>">
-											<span class="sub-item">Absensi Rutin</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('absensi_nonrutin_warga_control') ?>">
-											<span class="sub-item">Absensi Non Rutin</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('perizinan_pulang_warga_control') ?>">
-											<span class="sub-item">Perizinan Pulang</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('perizinan_kegiatan_warga_control') ?>">
-											<span class="sub-item">Perizinan Kegiatan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('catatan_warga_control') ?>">
-											<span class="sub-item">Catatan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('catatan_warga_control') ?>">
-											<span class="sub-item">Pelanggaran</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li> -->
+						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
@@ -241,7 +201,7 @@
 						</li>
 						<li class="nav-item">
 							<a href="<?= site_url('evaluasi_control') ?>">
-								<i class="fas fa-archive"></i>
+								<i class="fas fa-exclamation-triangle"></i>
 								<p>Evaluasi</p>
 							</a>
 						</li>

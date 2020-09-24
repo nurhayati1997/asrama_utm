@@ -3,7 +3,7 @@
 		<div class="page-inner py-5">
 			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 				<div>
-					<h2 class="text-white pb-2 fw-bold">Super Admin</h2>
+					<h2 class="text-white pb-2 fw-bold">Perizinan</h2>
 					<h5 class="text-white op-7 mb-2">Asrama Mahasiswa Universitas Trunojoyo Madura</h5>
 				</div>
 				<!-- <div class="ml-md-auto py-2 py-md-0">
@@ -26,7 +26,7 @@
 					</div>
 					<div class="card-body">
 						<div class="user-profile text-center">
-							<div class="name">Pengguna</div>
+							<div class="name">Perizinan</div>
 							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data
@@ -62,12 +62,12 @@
 								<table id="myTable" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>Username</th>
-											<th>Jenis Kelamin</th>
-											<th>Jurusan</th>
-											<th>Gedung</th>
-											<th>Kamar</th>
-											<th>Alamat</th>
+											<th>Nama</th>
+											<th>Tanggal Izin</th>
+											<th>Jam Izin</th>
+											<th>Tanggal Kembali</th>
+											<th>Jam Kembali</th>
+											<th>Keterangan</th>
 											<th style="width: 10%">AKSI</th>
 										</tr>
 									</thead>
@@ -89,7 +89,7 @@
 					<span class="fw-mediumbold">
 						Data Master</span>
 					<span class="fw-light">
-						Pengguna
+						Perizinan
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -99,54 +99,40 @@
 			<div class="modal-body">
 				<form>
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Username</label>
+								<label for="username">Nama</label>
 								<input type="text" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Jenis Kelamin</label>
-								<select id="jk" class="form-control">
-									<option value="0">Perempuan</option>
-									<option value="1">Laki-laki</option>
-								</select>
+								<label for="username">Tanggal Izin</label>
+								<input type="date" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jurusan">Jurusan</label>
-								<input type="text" class="form-control" id="jurusan" placeholder="Jurusan">
+								<label for="username">Jam Izin</label>
+								<input type="time" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="gedung">Gedung</label>
-								<select id="gedung" class="form-control">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									<option value="D">D</option>
-								</select>
+								<label for="username">Tanggal Kembali</label>
+								<input type="date" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="kamar">Kamar</label>
-								<input type="text" class="form-control" id="kamar" placeholder="Kamar">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="no">No Telp.</label>
-								<input type="number" maxlength="13" class="form-control" id="no" placeholder="No Telp">
+								<label for="username">Jam Kembali</label>
+								<input type="time" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="alamat">Alamat</label>
-								<input type="text" class="form-control" id="alamat" placeholder="Alamat">
+								<label for="username">Keterangan</label>
+								<input type="type" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 					</div>
@@ -169,7 +155,7 @@
 					<span class="fw-mediumbold">
 						Data Master</span>
 					<span class="fw-light">
-						Pengguna
+						Kegiatan Non Rutin
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -73,7 +73,7 @@
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link" href="<?= site_url('logout_control') ?>" title="Logout" aria-expanded="false">
-								<i class="fas fa-arrow-circle-right"></i>
+								<i class="fas fa-power-off"></i>
 							</a>
 						</li>
 					</ul>
@@ -118,32 +118,6 @@
 								<p>Management User</p>
 							</a>
 						</li>
-						<!-- <li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Penghuni Asrama</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="tables">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('pengelola_control') ?>">
-											<span class="sub-item">Pengelola</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('pengurus_control') ?>">
-											<span class="sub-item">Pengurus</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('warga_control') ?>">
-											<span class="sub-item">Warga</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li> -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#monitoring">
 								<i class="fas fa-desktop"></i>
@@ -176,7 +150,6 @@
 										<a href="<?= site_url('catatan_control') ?>">
 											<span class="sub-item">Catatan</span>
 										</a>
-									</li>a>
 									</li>
 								</ul>
 							</div>
@@ -185,7 +158,7 @@
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-							<h4 class="text-section">Pengaaduan</h4>
+							<h4 class="text-section">Pengaduan</h4>
 						</li>
 						<li class="nav-item">
 							<a href="<?= site_url('pengaduan_control') ?>">

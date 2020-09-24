@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Asrama Mahasiswa UTM</title>
@@ -32,15 +31,14 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
-
 <body>
-	<div class="wrapper">
+	<div class="wrapper compact-wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="index.html" class="logo">
-					<img src="<?= base_url() ?>assets/img/asrama.png" alt="navbar brand" class="navbar-brand">
+				<a class="logo">
+					<img src="<?= base_url() ?>assets/img/logo_asrama.png" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -48,18 +46,30 @@
 					</span>
 				</button>
 				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
-				<div class="nav-toggle">
+				<!-- <div class="nav-toggle">
 					<button class="btn btn-toggle toggle-sidebar">
 						<i class="icon-menu"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-
+				
 				<div class="container-fluid">
+					<div class="collapse" id="search-nav">
+						<form class="navbar-left navbar-form nav-search mr-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pr-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Search ..." class="form-control">
+							</div>
+						</form>
+					</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link" href="<?= site_url('logout_control') ?>" title="Logout" aria-expanded="false">
@@ -251,7 +261,8 @@
 				</div>
 			</footer>
 		</div>
-
+		
+		
 		<!-- Custom template | don't include it in your project! -->
 		<div class="custom-template">
 			<div class="title">Settings</div>
@@ -268,7 +279,7 @@
 							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br />
+							<br/>
 							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
@@ -289,7 +300,7 @@
 							<button type="button" class="changeTopBarColor" data-color="orange"></button>
 							<button type="button" class="changeTopBarColor" data-color="red"></button>
 							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br />
+							<br/>
 							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
 							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
 							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
@@ -503,5 +514,4 @@
 		});
 	</script>
 </body>
-
 </html>

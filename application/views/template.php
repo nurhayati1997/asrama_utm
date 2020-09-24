@@ -67,7 +67,7 @@
 							</a>
 						</li>
 						<li class="nav-item dropdown hidden-caret">
-							<a  aria-expanded="false">
+							<a aria-expanded="false">
 								<div class="avatar-sm">
 									<img src="<?= base_url() ?>assets/img/admin.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
@@ -115,7 +115,7 @@
 								<p>Management User</p>
 							</a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
 								<p>Penghuni Asrama</p>
@@ -140,11 +140,11 @@
 									</li>
 								</ul>
 							</div>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#monitoring_pengurus">
 								<i class="fas fa-desktop"></i>
-								<p>Monitoring Pengurus</p>
+								<p>Monitoring</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="monitoring_pengurus">
@@ -182,7 +182,7 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a data-toggle="collapse" href="#monitoring_warga">
 								<i class="fas fa-layer-group"></i>
 								<p>Monitoring Warga</p>
@@ -222,7 +222,7 @@
 									</li>
 								</ul>
 							</div>
-						</li>
+						</li> -->
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>

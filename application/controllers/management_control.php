@@ -17,53 +17,55 @@ class management_control extends CI_Controller
 
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("login")->result());
+		echo json_encode($this->db_model->get_all("pengguna")->result());
 	}
 
-	// public function tambah()
-	// {
-	// 	$data = [
-	// 		"kode_barang" => $this->input->post("kode", TRUE),
-	// 		"nama_barang" => $this->input->post("nama", TRUE),
-	// 		"distributor" => $this->input->post("distributor", TRUE),
-	// 		"jenis" => $this->input->post("jenis", TRUE),
-	// 		"keterangan" => $this->input->post("ket", TRUE),
-	// 		"lokasi" => $this->input->post("lokasi", TRUE),
-	// 		"merk_barang" => $this->input->post("merk", TRUE),
-	// 		"harga_kulak" => $this->input->post("satuan", TRUE),
-	// 		"harga_jual" => $this->input->post("jual", TRUE),
-	// 		"pagu" => $this->input->post("pagu", TRUE),
-	// 		"hapus" => 0
-	// 	];
-	// 	$this->db_model->insert('tbl_barang', $data);
-	// 	echo json_encode($data);
-	// }
-	// function ubah_list()
-	// {
-	// 	echo json_encode($this->db_model->get_where('tbl_barang', ["id_barang" => $this->input->post('id', TRUE)])->result());
-	// }
+	public function tambah()
+	{
+		$data = [
+			"jurusan" => $this->input->post("jurusan", TRUE),
+			"jenis_kelamin" => $this->input->post("jk", TRUE),
+			"username" => $this->input->post("username", TRUE),
+			"gedung" => $this->input->post("gedung", TRUE),
+			"kamar" => $this->input->post("kamar", TRUE),
+			"no_hp" => $this->input->post("no", TRUE),
+			"alamat" => $this->input->post("alamat", TRUE),
+			"rule" => 0,
+			"password" => md5(12345)
+		];
+		$this->db_model->insert('pengguna', $data);
+		echo json_encode($data);
+	}
 
-	// public function ubah()
-	// {
-	// 	$data = [
-	// 		"kode_barang" => $this->input->post("kode", TRUE),
-	// 		"nama_barang" => $this->input->post("nama", TRUE),
-	// 		"distributor" => $this->input->post("distributor", TRUE),
-	// 		"jenis" => $this->input->post("jenis", TRUE),
-	// 		"keterangan" => $this->input->post("ket", TRUE),
-	// 		"lokasi" => $this->input->post("lokasi", TRUE),
-	// 		"merk_barang" => $this->input->post("merk", TRUE),
-	// 		"harga_kulak" => $this->input->post("satuan", TRUE),
-	// 		"harga_jual" => $this->input->post("jual", TRUE),
-	// 		"stok_barang" => $this->input->post("stok", TRUE),
-	// 		"pagu" => $this->input->post("pagu", TRUE)
-	// 	];
-	// 	$this->db_model->update('tbl_barang', $data, array('id_barang' => $this->input->post('id', TRUE)));
-	// 	echo json_encode($data);
-	// }
+	function ubah_list()
+	{
+		echo json_encode($this->db_model->get_where('pengguna', ["id_pengguna" => $this->input->post('id', TRUE)])->result());
+	}
+
+	public function ubah()
+	{
+		$data = [
+			"jurusan" => $this->input->post("jurusan", TRUE),
+			"jenis_kelamin" => $this->input->post("jk", TRUE),
+			"username" => $this->input->post("user", TRUE),
+			"gedung" => $this->input->post("gedung", TRUE),
+			"kamar" => $this->input->post("kamar", TRUE),
+			"no_hp" => $this->input->post("no", TRUE),
+			"alamat" => $this->input->post("alamat", TRUE)
+		];
+		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
+
+		if ($this->input->post("pass", TRUE) != "") {
+			$data = [
+				"password" => md5($this->input->post("pass", TRUE))
+			];
+			$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
+		}
+		echo json_encode("");
+	}
 
 	public function hapus()
 	{
-		echo json_encode($this->db_model->delete("login", ['id' => $this->input->post('id', TRUE)]));
+		echo json_encode($this->db_model->delete("pengguna", ['id_pengguna' => $this->input->post('id', TRUE)]));
 	}
 }

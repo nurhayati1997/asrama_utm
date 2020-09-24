@@ -67,7 +67,7 @@
 							</a>
 						</li>
 						<li class="nav-item dropdown hidden-caret">
-							<a  aria-expanded="false">
+							<a aria-expanded="false">
 								<div class="avatar-sm">
 									<img src="<?= base_url() ?>assets/img/admin.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>

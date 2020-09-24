@@ -52,6 +52,12 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
+							<div style="display: none;" class="alert alert-success alert-dismissible fade show" id="match-alert" role="alert">
+								<strong>Password Tidak Sama</strong>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
 							<div class="table-responsive">
 								<table id="myTable" class="display table table-striped table-hover">
 									<thead>
@@ -95,21 +101,59 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="nama_jasa">Nama Jasa</label>
-								<input type="text" class="form-control input-pill" id="nama_jasa" placeholder="">
+								<label for="username">Username</label>
+								<input type="text" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="harga_jasa">Harga Jasa</label>
-								<input type="text" class="form-control input-pill" id="harga_jasa" placeholder="">
+								<label for="jk">Jenis Kelamin</label>
+								<select id="jk" class="form-control">
+									<option value="0">Perempuan</option>
+									<option value="1">Laki-laki</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="jurusan">Jurusan</label>
+								<input type="text" class="form-control" id="jurusan" placeholder="Jurusan">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="gedung">Gedung</label>
+								<select id="gedung" class="form-control">
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="kamar">Kamar</label>
+								<input type="text" class="form-control" id="kamar" placeholder="Kamar">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="no">No Telp.</label>
+								<input type="number" maxlength="13" class="form-control" id="no" placeholder="No Telp">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="alamat">Alamat</label>
+								<input type="text" class="form-control" id="alamat" placeholder="Alamat">
 							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer no-bd">
-				<button onclick="tambah()" id="tambah_button" type="button" data-dismiss="modal" class="btn btn-primary">Tambah</button>
+				<button onclick="tambah()" id="tambah_button" type="button" class="btn btn-primary">Tambah</button>
 				<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
 			</div>
 		</div>
@@ -125,7 +169,7 @@
 					<span class="fw-mediumbold">
 						Data Master</span>
 					<span class="fw-light">
-						Jasa
+						Pengguna
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -137,14 +181,64 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="nama_jasa">Nama Jasa</label>
-								<input type="text" class="form-control input-pill" id="nama_jasa" placeholder="">
+								<label for="ubah_username">Username</label>
+								<input type="text" class="form-control" id="ubah_username" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="harga_jasa">Harga Jasa</label>
-								<input type="text" class="form-control input-pill" id="harga_jasa" placeholder="">
+								<label for="ubah_jk">Jenis Kelamin</label>
+								<select id="ubah_jk" class="form-control">
+									<option value="0">Perempuan</option>
+									<option value="1">Laki-laki</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_jurusan">Jurusan</label>
+								<input type="text" class="form-control" id="ubah_jurusan" placeholder="Jurusan">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_gedung">Gedung</label>
+								<select id="ubah_gedung" class="form-control">
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_kamar">Kamar</label>
+								<input type="text" class="form-control" id="ubah_kamar" placeholder="Kamar">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_no">No Telp.</label>
+								<input type="number" maxlength="13" class="form-control" id="ubah_no" placeholder="No Telp">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="ubah_alamat">Alamat</label>
+								<input type="text" class="form-control" id="ubah_alamat" placeholder="Alamat">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_pass">Password</label>
+								<input type="password" class="form-control" id="ubah_pass" placeholder="Password">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="ubah_cpass">Confirm Password</label>
+								<input type="password" class="form-control" id="ubah_cpass" placeholder="Confirm Password">
 							</div>
 						</div>
 					</div>
@@ -166,7 +260,7 @@
 					<span class="fw-mediumbold">
 						Hapus Data Master</span>
 					<span class="fw-light">
-						Barang
+						Pengguna
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -197,53 +291,51 @@
 	});
 
 	function tambah() {
-		if (document.getElementById("pagu").value == "") {
-			document.getElementById("pagu").focus();
+		if (document.getElementById("alamat").value == "") {
+			document.getElementById("alamat").focus();
 		}
-		if (document.getElementById("jual").value == "") {
-			document.getElementById("jual").focus();
+		if (document.getElementById("no").value == "") {
+			document.getElementById("no").focus();
 		}
-		if (document.getElementById("satuan").value == "") {
-			document.getElementById("satuan").focus();
+		if (document.getElementById("kamar").value == "") {
+			document.getElementById("kamar").focus();
 		}
-		if (document.getElementById("merk").value == "") {
-			document.getElementById("merk").focus();
+		if (document.getElementById("gedung").value == "") {
+			document.getElementById("gedung").focus();
 		}
-		if (document.getElementById("distributor").value == "") {
-			document.getElementById("distributor").focus();
+		if (document.getElementById("jurusan").value == "") {
+			document.getElementById("jurusan").focus();
 		}
-		if (document.getElementById("nama").value == "") {
-			document.getElementById("nama").focus();
+		if (document.getElementById("jk").value == "") {
+			document.getElementById("jk").focus();
 		}
-		if (document.getElementById("jenis").value == "") {
-			document.getElementById("jenis").focus();
+		if (document.getElementById("username").value == "") {
+			document.getElementById("username").focus();
 		}
-		if (document.getElementById("kode").value == "") {
-			document.getElementById("kode").focus();
-		}
-		if (document.getElementById("kode").value != "" && document.getElementById("jenis").value != "" && document.getElementById("nama").value != "" &&
-			document.getElementById("distributor").value != "" && document.getElementById("merk").value != "" && document.getElementById("satuan").value != "" &&
-			document.getElementById("jual").value != "" && document.getElementById("pagu").value != "") {
+		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
+			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
 			// console.log("sukses");
 			$.ajax({
 				type: 'POST',
-				data: 'tabel="tbl_barang"' + '&kode=' + document.getElementById("kode").value +
-					'&jenis=' + document.getElementById("jenis").value + '&nama=' + document.getElementById("nama").value +
-					'&distributor=' + document.getElementById("distributor").value + '&satuan=' + document.getElementById("satuan").value +
-					'&jual=' + document.getElementById("jual").value + '&merk=' + document.getElementById("merk").value + '&pagu=' + document.getElementById("pagu").value,
-				url: '<?= base_url() ?>barang/tambah',
+				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
+					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
+					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
+					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
+				url: '<?= base_url() ?>management_control/tambah',
 				dataType: 'json',
 				success: function(data) {
-					document.getElementById("kode").value = "";
-					document.getElementById("nama").value = "";
-					document.getElementById("jenis").value = "";
-					document.getElementById("merk").value = "";
-					document.getElementById("distributor").value = "";
-					document.getElementById("satuan").value = "";
-					document.getElementById("jual").value = "";
-					document.getElementById("pagu").value = "";
+					// console.log(data);
+					document.getElementById("jurusan").value = "";
+					document.getElementById("jk").value = "";
+					document.getElementById("username").value = "";
+					document.getElementById("gedung").value = "";
+					document.getElementById("kamar").value = "";
+					document.getElementById("no").value = "";
+					document.getElementById("alamat").value = "";
 
 					ambil_data();
+
+					$('#addRowModal').modal('hide');
 				}
 			});
 		}
@@ -261,7 +353,15 @@
 					"data": "username"
 				},
 				{
-					"data": "jenis_kelamin"
+					"data": "jenis_kelamin",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == "0") {
+							return "Perempuan"
+						} else {
+							return "Laki-laki"
+						}
+					}
 				},
 				{
 					"data": "jurusan"
@@ -273,7 +373,17 @@
 					"data": "kamar"
 				},
 				{
-					"data": "rule"
+					"data": "rule",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "Super Admin"
+						} else if (data == 1) {
+							return "Pengurus"
+						} else {
+							return "Warga"
+						}
+					}
 				},
 				{
 					"data": "id_pengguna",
@@ -304,15 +414,16 @@
 			success: function(data) {
 				// console.log(data);
 				for (var i = 0; i < data.length; i++) {
-					document.getElementById("ubah_kode").value = data[i].kode_barang;
-					document.getElementById("ubah_nama").value = data[i].nama_barang;
-					document.getElementById("ubah_jenis").value = data[i].jenis;
-					document.getElementById("ubah_merk").value = data[i].merk_barang;
-					document.getElementById("ubah_distributor").value = data[i].distributor;
-					document.getElementById("ubah_satuan").value = data[i].harga_kulak;
-					document.getElementById("ubah_jual").value = data[i].harga_jual;
-					document.getElementById("ubah_stok").value = data[i].stok_barang;
-					document.getElementById("ubah_pagu").value = data[i].pagu;
+					document.getElementById("ubah_jurusan").value = data[i].jurusan;
+					document.getElementById("ubah_jk").value = data[i].jenis_kelamin;
+					document.getElementById("ubah_username").value = data[i].username;
+					document.getElementById("ubah_gedung").value = data[i].gedung;
+					document.getElementById("ubah_kamar").value = data[i].kamar;
+					document.getElementById("ubah_no").value = data[i].no_hp;
+					document.getElementById("ubah_alamat").value = data[i].alamat;
+					document.getElementById("ubah_pass").value = '';
+					document.getElementById("ubah_cpass").value = '';
+
 					var html = '<button onclick="ubah(' + id + ')" id="ubah_button" type="button" data-dismiss="modal" class="btn btn-primary">Ubah</button>';
 					$("#ubahModal_tombol").html(html);
 
@@ -329,22 +440,37 @@
 	}
 
 	function ubah(id) {
-		$.ajax({
-			type: 'POST',
-			data: 'id=' + id + '&kode=' + document.getElementById("ubah_kode").value +
-				'&jenis=' + document.getElementById("ubah_jenis").value + '&nama=' + document.getElementById("ubah_nama").value +
-				'&distributor=' + document.getElementById("ubah_distributor").value + '&satuan=' + document.getElementById("ubah_satuan").value +
-				'&jual=' + document.getElementById("ubah_jual").value + '&merk=' + document.getElementById("ubah_merk").value +
-				'&stok=' + document.getElementById("ubah_stok").value + '&pagu=' + document.getElementById("ubah_pagu").value,
-			url: '<?= base_url() ?>management_control/ubah',
-			dataType: 'json',
-			success: function(data) {
-				// console.log(data);
-				$('#ubahModal').modal('hide');
-
-				ambil_data();
+		var cek = 0;
+		if (document.getElementById("ubah_cpass").value != '' || document.getElementById("ubah_pass").value != '') {
+			if (document.getElementById("ubah_cpass").value != document.getElementById("ubah_pass").value) {
+				$("#match-alert").fadeTo(2000, 500).slideUp(500, function() {
+					$("#match-alert").slideUp(500);
+				});
+				cek = 1;
 			}
-		});
+		}
+		update(id, cek);
+	}
+
+	function update(id, cek) {
+		if (cek == 0) {
+			$.ajax({
+				type: 'POST',
+				data: 'id=' + id + +'&username=' + document.getElementById("ubah_username").value +
+					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
+					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
+					'&pass=' + document.getElementById("ubah_pass").value +
+					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
+				url: '<?= base_url() ?>management_control/ubah',
+				dataType: 'json',
+				success: function(data) {
+					// console.log(data);
+					$('#ubahModal').modal('hide');
+
+					ambil_data();
+				}
+			});
+		}
 	}
 
 	function hapus_list(id) {

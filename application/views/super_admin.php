@@ -26,7 +26,7 @@
 					</div>
 					<div class="card-body">
 						<div class="user-profile text-center">
-							<div class="name">Super Admin</div>
+							<div class="name">Pengguna</div>
 							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data
@@ -57,8 +57,11 @@
 									<thead>
 										<tr>
 											<th>Username</th>
+											<th>Jenis Kelamin</th>
+											<th>Jurusan</th>
+											<th>Gedung</th>
+											<th>Kamar</th>
 											<th>Jabatan</th>
-											<th>Level</th>
 											<th style="width: 10%">AKSI</th>
 										</tr>
 									</thead>
@@ -80,7 +83,7 @@
 					<span class="fw-mediumbold">
 						Data Master</span>
 					<span class="fw-light">
-						Jasa
+						Pengguna
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -258,13 +261,22 @@
 					"data": "username"
 				},
 				{
-					"data": "jabatan"
+					"data": "jenis_kelamin"
 				},
 				{
-					"data": "level"
+					"data": "jurusan"
 				},
 				{
-					"data": "id",
+					"data": "gedung"
+				},
+				{
+					"data": "kamar"
+				},
+				{
+					"data": "rule"
+				},
+				{
+					"data": "id_pengguna",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +

@@ -17,7 +17,7 @@ class management_control extends CI_Controller
 
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("login")->result());
+		echo json_encode($this->db_model->get_all("pengguna")->result());
 	}
 
 	// public function tambah()

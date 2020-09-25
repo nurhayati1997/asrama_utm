@@ -28,7 +28,7 @@
                                 <p><?= $this->session->flashdata('gagal_login'); ?></p>
                             </div>
                         <?php } ?>
-                        <form method="POST" class="register-form" id="login-form">
+                        <div>
                             <div class="form-group">
                                 <label for="nama"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <select name="nama" class="form-control" id="nama">
@@ -41,9 +41,9 @@
                             </div>
                             <div class="error"><?= form_error('password'); ?></div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                                <input type="submit" onclick="masuk()" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
-                        </form>
+                        </div>
                         <div class="social-login">
                             <span class="social-label"> </span>
                             <ul class="socials">
@@ -73,9 +73,10 @@
             $.ajax({
                 type: 'get',
                 data: 'target=tbl_pengguna',
-                url: '<?= base_url() ?>login/ambilData',
+                url: '<?= base_url() ?>login_control/ambilData',
                 dataType: 'json',
                 success: function(data) {
+                    // console.log(data);
                     var baris = '<option value="0">- Pilih Pengguna -</option>';
                     var nama = '';
                     for (var i = 0; i < data.length; i++) {
@@ -85,15 +86,35 @@
                                                     } else {
                                                         echo "0";
                                                     } ?>) {
-                            baris += "selected"
+                            baris += ""
                         }
-                        nama = data[i].nama
-                        baris += ' > ' + nama + ' </option>'
+                        baris += ' > ' + data[i].username + ' | ' + data[i].jurusan + ' </option>'
                     }
 
                     $("#nama").html(baris);
+                    console.log(baris);
                 }
             });
+        }
+
+        function masuk() {
+            if (document.getElementById("nama").value != '' && document.getElementById("password").value != '') {
+                $.ajax({
+                    type: 'POST',
+                    data: 'nama=' + document.getElementById("nama").value + '&password=' + document.getElementById("password").value,
+                    url: '<?= base_url() ?>login_control/coba',
+                    dataType: 'json',
+                    success: function(data) {
+                        // console.log(data);
+                        if (data == "") {
+                            window.location.replace("<?= base_url() ?>home_control");
+                        } else {
+                            window.location.replace("<?= base_url() ?>login_control");
+                        }
+
+                    }
+                });
+            }
         }
     </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

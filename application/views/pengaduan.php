@@ -26,7 +26,7 @@
 					</div>
 					<div class="card-body">
 						<div class="user-profile text-center">
-							<div class="name">Pelanggaran</div>
+							<div class="name">Pengaduan</div>
 							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data
@@ -64,8 +64,9 @@
 										<tr>
 											<th>Nama</th>
 											<th>Tanggal</th>
-											<th>Jenis</th>
-											<th>Alasan</th>
+											<th>Catatan Pengelola</th>
+											<th>Catatan Pengurus Harian</th>
+											<th>Catatan Pengurus Gedung</th>
 											<th style="width: 10%">AKSI</th>
 										</tr>
 									</thead>
@@ -87,7 +88,7 @@
 					<span class="fw-mediumbold">
 						Data Master</span>
 					<span class="fw-light">
-						Pelanggaran
+						Pengaduan
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -97,7 +98,7 @@
 			<div class="modal-body">
 				<form>
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="username">Nama</label>
 								<input type="text" class="form-control" id="username" placeholder="Username">
@@ -109,20 +110,22 @@
 								<input type="date" class="form-control" id="username" placeholder="Username">
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="jk">Jenis</label>
-								<select id="jk" class="form-control">
-									<option value="0">RINGAN</option>
-									<option value="1">SEDANG</option>
-									<option value="2">BERAT</option>
-								</select>
+								<label for="username">Pengelola</label>
+								<input type="text" class="form-control" id="username" placeholder="Pengelola Asrama">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Alasan</label>
-								<input type="text" class="form-control" id="username" placeholder="Alasan">
+								<label for="username">Pengurus Harian</label>
+								<input type="text" class="form-control" id="username" placeholder="Pengurus Harian Asrama">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="username">Pengurus Gedung</label>
+								<input type="text" class="form-control" id="username" placeholder="Pengurus Gedung Asrama">
 							</div>
 						</div>
 					</div>

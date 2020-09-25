@@ -134,7 +134,7 @@ input, select, textarea {
   -o-appearance: unset !important;
   -ms-appearance: unset !important; }
 
-select, input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   appearance: none !important;
   -moz-appearance: none !important;
   -webkit-appearance: none !important;
@@ -142,7 +142,7 @@ select, input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -ms-appearance: none !important;
   margin: 0; }
 
-select, input:focus, select:focus, textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   box-shadow: none !important;
   -moz-box-shadow: none !important;
@@ -186,7 +186,7 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
+  background: #1da0f2;
   padding: 150px 0; }
 
 .clear {
@@ -317,7 +317,7 @@ figure {
   .form-group:last-child {
     margin-bottom: 0px; }
 
-select, input {
+input {
   width: 100%;
   display: block;
   border: none;
@@ -514,10 +514,6 @@ label.valid {
   margin-left: 110px;
   margin-right: 20px;
   margin-top: 10px; }
-
-.error p{
-  font-size: 12px;color:red;
-}
 
 @media screen and (max-width: 1200px) {
   .container {

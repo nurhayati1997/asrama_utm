@@ -32,38 +32,38 @@ class login_control extends CI_Controller
 
 	private function login()
 	{
-		// 	$data['title'] = "Login";
-		// 	$nama = $this->input->post("nama");
-		// 	$password = $this->input->post("password");
-		// 	$user = $this->db_model->get_where("pengguna", ["username" => $nama])->row_array();
+			$data['title'] = "Login";
+			$nama = $this->input->post("nama");
+			$password = $this->input->post("password");
+			$user = $this->db_model->get_where("pengguna", ["username" => $nama])->row_array();
 
-		// 	if ($user) {
-		// 		if (password_verify($password, $user['password'])) {
-		// 			$data = [
-		// 				'id_pengguna' => $user['id_pengguna'],
-		// 				'username' => $user['username'],
-		// 				'rule' => $user['rule']
-		// 			];
-		// 			$this->session->set_userdata($data);
+			if ($user) {
+				if (password_verify($password, $user['password'])) {
+					$data = [
+						'id_pengguna' => $user['id_pengguna'],
+						'username' => $user['username'],
+						'rule' => $user['rule']
+					];
+					$this->session->set_userdata($data);
 
-		// 			redirect('home_control');
-		// 		} else {
-		// 			$this->session->set_flashdata('gagal_login', 'Maaf, Password anda salah :(');
-		// 			$this->load->view('login', $data);
-		// 		}
-		// 	} else {
-		// 		$this->session->set_flashdata('gagal_login', 'Silahkan Pilih pengguna dulu ya :)');
-		// 		$this->load->view('login', $data);
-		// 	}
-		// }
+					redirect('home_control');
+				} else {
+					$this->session->set_flashdata('gagal_login', 'Maaf, Password anda salah :(');
+					$this->load->view('login', $data);
+				}
+			} else {
+				$this->session->set_flashdata('gagal_login', 'Silahkan Pilih pengguna dulu ya :)');
+				$this->load->view('login', $data);
+			}
+		}
 
-		// public function logout()
-		// {
-		// 	$this->session->unset_userdata('id_pengguna');
-		// 	$this->session->unset_userdata('nama');
-		// 	$this->session->set_flashdata('berhasil_logout', 'Anda telah berhasil log out. Terimkasih :)');
-		// 	$data['title'] = "Login";
-		// 	redirect('login', $data);
+		public function logout()
+		{
+			$this->session->unset_userdata('id_pengguna');
+			$this->session->unset_userdata('nama');
+			$this->session->set_flashdata('berhasil_logout', 'Anda telah berhasil log out. Terimkasih :)');
+			$data['title'] = "Login";
+			redirect('login', $data);
 		echo json_encode($this->input->post("nama"));
 	}
 
@@ -91,10 +91,10 @@ class login_control extends CI_Controller
 		}
 	}
 
-	public function logout()
-	{
-		$this->session->unset_userdata('id_pengguna');
-		$this->session->unset_userdata('nama');
-		redirect('login_control');
-	}
+	// public function logout()
+	// {
+	// 	$this->session->unset_userdata('id_pengguna');
+	// 	$this->session->unset_userdata('nama');
+	// 	redirect('login_control');
+	// }
 }

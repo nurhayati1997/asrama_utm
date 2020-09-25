@@ -17,55 +17,54 @@ class absensi_rutin_control extends CI_Controller
 
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("pengguna")->result());
+		echo json_encode($this->db_model->get_all("v_absensi_rutin")->result());
 	}
 
 	public function tambah()
 	{
 		$data = [
-			"jurusan" => $this->input->post("jurusan", TRUE),
-			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("username", TRUE),
-			"gedung" => $this->input->post("gedung", TRUE),
-			"kamar" => $this->input->post("kamar", TRUE),
-			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE),
-			"rule" => 0,
-			"password" => md5(12345)
+			"id_pengguna" => $this->input->post("id", TRUE),
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"qiyamul_lail" => $this->input->post("ql", TRUE),
+			"subuh" => $this->input->post("subuh", TRUE),
+			"taklim" => $this->input->post("taklim", TRUE),
+			"isyak" => $this->input->post("isyak", TRUE),
+			"maghrib" => $this->input->post("maghrib", TRUE),
+			"jam_malam" => $this->input->post("jam", TRUE)
 		];
-		$this->db_model->insert('pengguna', $data);
+		$this->db_model->insert('absensi_rutin', $data);
 		echo json_encode($data);
 	}
 
 	function ubah_list()
 	{
-		echo json_encode($this->db_model->get_where('pengguna', ["id_pengguna" => $this->input->post('id', TRUE)])->result());
+		echo json_encode($this->db_model->get_where('v_absensi_rutin', ["id_absensi_rutin" => $this->input->post('id', TRUE)])->result());
 	}
 
 	public function ubah()
 	{
 		$data = [
-			"jurusan" => $this->input->post("jurusan", TRUE),
-			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("user", TRUE),
-			"gedung" => $this->input->post("gedung", TRUE),
-			"kamar" => $this->input->post("kamar", TRUE),
-			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE)
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"qiyamul_lail" => $this->input->post("ql", TRUE),
+			"subuh" => $this->input->post("subuh", TRUE),
+			"taklim" => $this->input->post("taklim", TRUE),
+			"isyak" => $this->input->post("isyak", TRUE),
+			"maghrib" => $this->input->post("maghrib", TRUE),
+			"jam_malam" => $this->input->post("jam", TRUE)
 		];
-		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
+		$this->db_model->update('absensi_rutin', $data, array('id_absensi_rutin' => $this->input->post('id', TRUE)));
 
-		if ($this->input->post("pass", TRUE) != "") {
-			$data = [
-				"password" => md5($this->input->post("pass", TRUE))
-			];
-			$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
-		}
 		echo json_encode("");
 	}
 
 	public function hapus()
 	{
-		echo json_encode($this->db_model->delete("pengguna", ['id_pengguna' => $this->input->post('id', TRUE)]));
+		echo json_encode($this->db_model->delete("absensi_rutin", ['id_absensi_rutin' => $this->input->post('id', TRUE)]));
+	}
+
+	public function get_username()
+	{
+		// echo json_encode("yey");
+		echo json_encode($this->db_model->get_where('pengguna', array('rule' => 0, 'hapus' => 0))->result());
 	}
 }

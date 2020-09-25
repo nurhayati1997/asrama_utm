@@ -103,21 +103,24 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-                                <!-- dropdown id_pengguna -->
+								<!-- dropdown id_pengguna -->
 								<label for="username">Nama</label>
-								<input type="text" class="form-control" id="username" placeholder="Username">
+								<input list="list_username" id="username" name="username" class="form-control" required>
+								<datalist id="list_username">
+
+								</datalist>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<label for="tanggal">Tanggal</label>
+								<input type="date" class="form-control" id="tanggal" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Qiyamul Lail</label>
-								<select id="jk" class="form-control">
+								<label for="ql">Qiyamul Lail</label>
+								<select id="ql" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -126,8 +129,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Subuh</label>
-								<select id="jk" class="form-control">
+								<label for="subuh">Subuh</label>
+								<select id="subuh" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -136,8 +139,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Taklim</label>
-								<select id="jk" class="form-control">
+								<label for="taklim">Taklim</label>
+								<select id="taklim" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -146,8 +149,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Maghrib</label>
-								<select id="jk" class="form-control">
+								<label for="maghrib">Maghrib</label>
+								<select id="maghrib" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -156,8 +159,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Isyak</label>
-								<select id="jk" class="form-control">
+								<label for="isyak">Isyak</label>
+								<select id="isyak" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -166,8 +169,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Jam Malam</label>
-								<select id="jk" class="form-control">
+								<label for="jam">Jam Malam</label>
+								<select id="jam" class="form-control">
 									<option value="0">TELAT</option>
 									<option value="1">IZIN</option>
 									<option value="2">ON TIME</option>
@@ -206,20 +209,21 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_user">Nama</label>
-								<input type="text" class="form-control" id="ubah_user" placeholder="Username">
+								<!-- dropdown id_pengguna -->
+								<label for="username">Nama</label>
+								<input id="ubah_username" name="username" class="form-control" readonly required>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_user">Date</label>
-								<input type="date" class="form-control" id="ubah_tgl" placeholder="Username">
+								<label for="ubah_tanggal">Tanggal</label>
+								<input type="date" class="form-control" id="ubah_tanggal" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Qiyamul Lail</label>
-								<select id="ubah_jk" class="form-control">
+								<label for="ubah_ql">Qiyamul Lail</label>
+								<select id="ubah_ql" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -228,8 +232,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Qiyamul Lail</label>
-								<select id="ubah_jk" class="form-control">
+								<label for="ubah_subuh">Subuh</label>
+								<select id="ubah_subuh" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -238,18 +242,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Subuh</label>
-								<select id="ubah_jk" class="form-control">
-									<option value="0">ALFA</option>
-									<option value="1">IZIN</option>
-									<option value="2">HADIR</option>
-								</select>
-							</div>
-                        </div>
-                        <div class="col-sm-6">
-							<div class="form-group">
-								<label for="ubah_jk">Taklim</label>
-								<select id="ubah_jk" class="form-control">
+								<label for="ubah_taklim">Taklim</label>
+								<select id="ubah_taklim" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -258,8 +252,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Maghrib</label>
-								<select id="ubah_jk" class="form-control">
+								<label for="ubah_maghrib">Maghrib</label>
+								<select id="ubah_maghrib" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -268,8 +262,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Isyak</label>
-								<select id="ubah_jk" class="form-control">
+								<label for="ubah_isyak">Isyak</label>
+								<select id="ubah_isyak" class="form-control">
 									<option value="0">ALFA</option>
 									<option value="1">IZIN</option>
 									<option value="2">HADIR</option>
@@ -278,11 +272,11 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Jam Malam</label>
-								<select id="ubah_jk" class="form-control">
-									<option value="0">ALFA</option>
+								<label for="ubah_jam">Jam Malam</label>
+								<select id="ubah_jam" class="form-control">
+									<option value="0">TELAT</option>
 									<option value="1">IZIN</option>
-									<option value="2">HADIR</option>
+									<option value="2">ON TIME</option>
 								</select>
 							</div>
 						</div>
@@ -333,50 +327,74 @@
 
 		//datatabel
 		ambil_data();
+		get_username();
 	});
 
+	function get_username() {
+		$.ajax({
+			type: 'POST',
+			url: '<?= site_url() ?>absensi_rutin_control/get_username',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
+					html += '<option value="' + data[i].id_pengguna + ' | ' + data[i].username + ' | ' + data[i].jurusan + '"></option>';
+				}
+				$("#list_username").html(html);
+			}
+		});
+	}
+
 	function tambah() {
-		if (document.getElementById("alamat").value == "") {
-			document.getElementById("alamat").focus();
+		if (document.getElementById("jam").value == "") {
+			document.getElementById("jam").focus();
 		}
-		if (document.getElementById("no").value == "") {
-			document.getElementById("no").focus();
+		if (document.getElementById("isyak").value == "") {
+			document.getElementById("isyak").focus();
 		}
-		if (document.getElementById("kamar").value == "") {
-			document.getElementById("kamar").focus();
+		if (document.getElementById("maghrib").value == "") {
+			document.getElementById("maghrib").focus();
 		}
-		if (document.getElementById("gedung").value == "") {
-			document.getElementById("gedung").focus();
+		if (document.getElementById("taklim").value == "") {
+			document.getElementById("taklim").focus();
 		}
-		if (document.getElementById("jurusan").value == "") {
-			document.getElementById("jurusan").focus();
+		if (document.getElementById("subuh").value == "") {
+			document.getElementById("subuh").focus();
 		}
-		if (document.getElementById("jk").value == "") {
-			document.getElementById("jk").focus();
+		if (document.getElementById("ql").value == "") {
+			document.getElementById("ql").focus();
+		}
+		if (document.getElementById("tanggal").value == "") {
+			document.getElementById("tanggal").focus();
 		}
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
-			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
+		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("ql").value != "" && document.getElementById("jam").value != "" &&
+			document.getElementById("subuh").value != "" && document.getElementById("taklim").value != "" && document.getElementById("maghrib").value != "" && document.getElementById("isyak").value != "") {
 			// console.log("sukses");
+			var pengguna = document.getElementById("username").value.split(' | ');
+
 			$.ajax({
 				type: 'POST',
-				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
-					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
-					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
-					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
-				url: '<?= base_url() ?>management_control/tambah',
+				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
+					'&tanggal=' + document.getElementById("tanggal").value + '&ql=' + document.getElementById("ql").value +
+					'&subuh=' + document.getElementById("subuh").value + '&taklim=' + document.getElementById("taklim").value +
+					'&jam=' + document.getElementById("jam").value +
+					'&isyak=' + document.getElementById("isyak").value + '&maghrib=' + document.getElementById("maghrib").value,
+				url: '<?= base_url() ?>absensi_rutin_control/tambah',
 				dataType: 'json',
 				success: function(data) {
 					// console.log(data);
-					document.getElementById("jurusan").value = "";
-					document.getElementById("jk").value = "";
 					document.getElementById("username").value = "";
-					document.getElementById("gedung").value = "";
-					document.getElementById("kamar").value = "";
-					document.getElementById("no").value = "";
-					document.getElementById("alamat").value = "";
+					document.getElementById("tanggal").value = "";
+					document.getElementById("ql").value = "";
+					document.getElementById("subuh").value = "";
+					document.getElementById("taklim").value = "";
+					document.getElementById("isyak").value = "";
+					document.getElementById("maghrib").value = "";
+					document.getElementById("jam").value = "";
 
 					ambil_data();
 
@@ -398,40 +416,88 @@
 					"data": "username"
 				},
 				{
-					"data": "jenis_kelamin",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == "0") {
-							return "Perempuan"
-						} else {
-							return "Laki-laki"
-						}
-					}
+					"data": "tanggal"
 				},
 				{
-					"data": "jurusan"
-				},
-				{
-					"data": "gedung"
-				},
-				{
-					"data": "kamar"
-				},
-				{
-					"data": "rule",
+					"data": "qiyamul_lail",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						if (data == 0) {
-							return "Super Admin"
+							return "ALFA"
 						} else if (data == 1) {
-							return "Pengurus"
+							return "IZIN"
 						} else {
-							return "Warga"
+							return "HADIR"
 						}
 					}
 				},
 				{
-					"data": "id_pengguna",
+					"data": "subuh",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "ALFA"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "HADIR"
+						}
+					}
+				},
+				{
+					"data": "taklim",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "ALFA"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "HADIR"
+						}
+					}
+				},
+				{
+					"data": "maghrib",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "ALFA"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "HADIR"
+						}
+					}
+				},
+				{
+					"data": "isyak",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "ALFA"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "HADIR"
+						}
+					}
+				},
+				{
+					"data": "jam_malam",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "TELAT"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "ON TIME"
+						}
+					}
+				},
+				{
+					"data": "id_absensi_rutin",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +
@@ -454,20 +520,20 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/ubah_list',
+			url: '<?= base_url() ?>absensi_rutin_control/ubah_list',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
 				for (var i = 0; i < data.length; i++) {
-					document.getElementById("ubah_jurusan").value = data[i].jurusan;
-					document.getElementById("ubah_jk").value = data[i].jenis_kelamin;
-					document.getElementById("ubah_user").value = data[i].username;
-					document.getElementById("ubah_gedung").value = data[i].gedung;
-					document.getElementById("ubah_kamar").value = data[i].kamar;
-					document.getElementById("ubah_no").value = data[i].no_hp;
-					document.getElementById("ubah_alamat").value = data[i].alamat;
-					document.getElementById("ubah_pass").value = '';
-					document.getElementById("ubah_cpass").value = '';
+
+					document.getElementById("ubah_username").value = data[i].username;
+					document.getElementById("ubah_tanggal").value = data[i].tanggal;
+					document.getElementById("ubah_ql").value = data[i].qiyamul_lail;
+					document.getElementById("ubah_subuh").value = data[i].subuh;
+					document.getElementById("ubah_taklim").value = data[i].taklim;
+					document.getElementById("ubah_isyak").value = data[i].isyak;
+					document.getElementById("ubah_maghrib").value = data[i].maghrib;
+					document.getElementById("ubah_jam").value = data[i].jam_malam;
 
 					var html = '<button onclick="ubah(' + id + ')" id="ubah_button" type="button" data-dismiss="modal" class="btn btn-primary">Ubah</button>';
 					$("#ubahModal_tombol").html(html);
@@ -485,38 +551,21 @@
 	}
 
 	function ubah(id) {
-		var cek = 0;
-		if (document.getElementById("ubah_cpass").value != '' || document.getElementById("ubah_pass").value != '') {
-			if (document.getElementById("ubah_cpass").value != document.getElementById("ubah_pass").value) {
-				$("#match-alert").fadeTo(2000, 500).slideUp(500, function() {
-					$("#match-alert").slideUp(500);
-				});
-				cek = 1;
+		$.ajax({
+			type: 'POST',
+			data: 'id=' + id + '&tanggal=' + document.getElementById("ubah_tanggal").value +
+				'&ql=' + document.getElementById("ubah_ql").value + '&subuh=' + document.getElementById("ubah_subuh").value +
+				'&taklim=' + document.getElementById("ubah_taklim").value + '&isyak=' + document.getElementById("ubah_isyak").value +
+				'&maghrib=' + document.getElementById("ubah_maghrib").value + '&jam=' + document.getElementById("ubah_jam").value,
+			url: '<?= base_url() ?>absensi_rutin_control/ubah',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				$('#ubahModal').modal('hide');
+
+				ambil_data();
 			}
-		}
-		update(id, cek);
-	}
-
-	function update(id, cek) {
-		// console.log(document.getElementById("ubah_username").value);
-		if (cek == 0) {
-			$.ajax({
-				type: 'POST',
-				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
-					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
-					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
-					'&pass=' + document.getElementById("ubah_pass").value +
-					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
-				url: '<?= base_url() ?>management_control/ubah',
-				dataType: 'json',
-				success: function(data) {
-					// console.log(data);
-					$('#ubahModal').modal('hide');
-
-					ambil_data();
-				}
-			});
-		}
+		});
 	}
 
 	function hapus_list(id) {

@@ -31,6 +31,7 @@ class management_control extends CI_Controller
 			"no_hp" => $this->input->post("no", TRUE),
 			"alamat" => $this->input->post("alamat", TRUE),
 			"rule" => 0,
+			"hapus" => 0,
 			"password" => md5(12345)
 		];
 		$this->db_model->insert('pengguna', $data);
@@ -66,6 +67,9 @@ class management_control extends CI_Controller
 
 	public function hapus()
 	{
-		echo json_encode($this->db_model->delete("pengguna", ['id_pengguna' => $this->input->post('id', TRUE)]));
+		$data = [
+			"hapus" => 1
+		];
+		echo json_encode($this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE))));
 	}
 }

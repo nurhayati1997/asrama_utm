@@ -388,14 +388,18 @@
 				{
 					"data": "id_pengguna",
 					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						var html = '<div class="form-button-action">' +
-							'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
-							'<i class="fa fa-edit"></i>' +
-							'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
-							'<i class="fa fa-times"></i>' +
-							'</button>' +
-							'</div>';
+						if (row.hapus == 0) {
+							// Tampilkan kolom aksi
+							var html = '<div class="form-button-action">' +
+								'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
+								'<i class="fa fa-edit"></i>' +
+								'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
+								'<i class="fa fa-times"></i>' +
+								'</button>' +
+								'</div>';
+						} else {
+							var html = '<span class="badge badge-pill badge-danger">Data Telah Dihapus</span>';
+						}
 
 						return html
 					}

@@ -20,7 +20,7 @@
 					<div class="card-header" style="background-image: url('<?= base_url() ?>assets/img/examples/example3.jpeg')">
 						<div class="profile-picture">
 							<div class="avatar avatar-xl">
-								<img src="<?= base_url() ?>assets/img/jasa.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="<?= base_url() ?>assets/img/logo.png" alt="..." class="avatar-img rounded-circle">
 							</div>
 						</div>
 					</div>
@@ -30,6 +30,10 @@
 							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data
+							</button>
+							<button class="btn btn-warning btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+								<i class="fa fa-print "></i>
+								Export
 							</button>
 						</div>
 						<div class="card-footer">

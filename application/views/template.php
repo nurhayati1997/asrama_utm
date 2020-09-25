@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Asrama Mahasiswa UTM</title>
@@ -31,6 +32,7 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
+
 <body>
 	<div class="wrapper compact-wrapper">
 		<div class="main-header">
@@ -56,7 +58,7 @@
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-				
+
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -72,7 +74,7 @@
 					</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item dropdown hidden-caret">
-							<a class="nav-link" href="<?= site_url('logout_control') ?>" title="Logout" aria-expanded="false">
+							<a class="nav-link" href="<?= site_url('login_control/logout') ?>" title="Logout" aria-expanded="false">
 								<i class="fas fa-power-off"></i>
 							</a>
 						</li>
@@ -93,8 +95,14 @@
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Username
-									<span class="user-level">Super User</span>
+									<?php echo $this->session->userdata("username"); ?>
+									<span class="user-level"><?php if ($this->session->userdata("username") == 0) {
+																	echo "Super Admin";
+																} else if ($this->session->userdata("username") == 1) {
+																	echo "Pengurus";
+																} else {
+																	echo "Warga";
+																} ?></span>
 								</span>
 							</a>
 						</div>
@@ -194,8 +202,8 @@
 				</div>
 			</footer>
 		</div>
-		
-		
+
+
 		<!-- Custom template | don't include it in your project! -->
 		<div class="custom-template">
 			<div class="title">Settings</div>
@@ -212,7 +220,7 @@
 							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
@@ -233,7 +241,7 @@
 							<button type="button" class="changeTopBarColor" data-color="orange"></button>
 							<button type="button" class="changeTopBarColor" data-color="red"></button>
 							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
 							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
 							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
@@ -447,4 +455,5 @@
 		});
 	</script>
 </body>
+
 </html>

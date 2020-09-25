@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,10 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="<?= base_url() ?>asset_login/css/style.css">
+
+    <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
 </head>
+
 <body>
 
     <div class="main">
@@ -23,39 +27,64 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Selamat Datang</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
-                            </div>
-                            <!-- <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div> -->
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
-                            </div>
-                            <!-- <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div> -->
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Login"/>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <label for="nama"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <select name="nama" class="form-control" id="nama">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="pass" id="pass" placeholder="Password" />
+                        </div>
+                        <div class="error" id="error"></div>
+                        <div class="form-group">
+                            <button onclick="login_button()" class="btn btn-primary btn-round ml-auto">Login</button>
+                        </div>
                     </div>
                     <div class="signup-image">
                         <figure><img src="<?= base_url() ?>asset_login/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a  class="signup-image-link">Asrama Mahasiswa Universitas Trunojoyo Madura</a>
+                        <a class="signup-image-link">Asrama Mahasiswa Universitas Trunojoyo Madura</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    <script>
+        log_in();
 
-    <!-- JS -->
-    <script src="<?= base_url() ?>asset_login/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>asset_login/js/main.js"></script>
+        function log_in() {
+            $.ajax({
+                type: 'get',
+                data: 'target=pengguna',
+                url: '<?= base_url() ?>login_control/ambilData',
+                dataType: 'json',
+                success: function(data) {
+                    var baris = '<option value="">- Pilih Pengguna -</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        baris += '<option value="' + data[i].id_pengguna + '">' + data[i].username + ' | ' + data[i].jurusan + '</option>';
+                    }
+                    // console.log(baris);
+                    $("#nama").html(baris);
+                }
+            });
+        }
+
+        function login_button() {
+            $.ajax({
+                type: 'POST',
+                data: 'nama=' + document.getElementById("nama").value + '&pass=' + document.getElementById("pass").value,
+                url: '<?= base_url() ?>login_control/coba',
+                dataType: 'json',
+                success: function(data) {
+                    if (data == '') {
+                        location.replace("<?= base_url() ?>login_control");
+                    } else {
+                        $("#error").html(data);
+                    }
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>

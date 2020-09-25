@@ -9,6 +9,7 @@ class login_control extends CI_Controller
 		parent::__construct();
 		$this->load->model('db_model');
 		$this->load->library('form_validation');
+		$this->load->helper('url');
 	}
 
 	public function index()
@@ -17,78 +18,83 @@ class login_control extends CI_Controller
 		// 	redirect("dashboard");
 		// }
 		if ($this->session->userdata("id_pengguna")) {
-			redirect("dashboard");
-		}
-		$this->form_validation->set_rules('password', 'Password', 'required|trim');
-		if ($this->form_validation->run() == false) {
+			redirect('home_control');
+		} else {
 			$data['title'] = "Login";
 			$this->load->view('login', $data);
-		} else {
-			$this->_login();
 		}
 	}
 
-	// public function ambilData()
-	// {
-	// 	$data = $this->db_model->get_all($this->input->get('target'));
-	// 	echo json_encode($data->result());
-	// }
+	public function ambilData()
+	{
+		echo json_encode($this->db_model->get_all($this->input->get('target'))->result());
+	}
 
-	// private function _login()
-	// {
-	// 	$data['title'] = "Login";
-	// 	$nama = $this->input->post("nama");
-	// 	$password = $this->input->post("password");
-	// 	$user = $this->db_model->get_where("tbl_pengguna", ["id_pengguna" => $nama])->row_array();
+	private function login()
+	{
+		// 	$data['title'] = "Login";
+		// 	$nama = $this->input->post("nama");
+		// 	$password = $this->input->post("password");
+		// 	$user = $this->db_model->get_where("pengguna", ["username" => $nama])->row_array();
 
-	// 	if ($user) {
-	// 		if (password_verify($password, $user['password'])) {
-	// 			$data = [
-	// 				'id_pengguna' => $user['id_pengguna'],
-	// 				'nama' => $user['nama'],
-	// 				'rule' => $user['rule']
-	// 			];
-	// 			$this->session->set_userdata($data);
+		// 	if ($user) {
+		// 		if (password_verify($password, $user['password'])) {
+		// 			$data = [
+		// 				'id_pengguna' => $user['id_pengguna'],
+		// 				'username' => $user['username'],
+		// 				'rule' => $user['rule']
+		// 			];
+		// 			$this->session->set_userdata($data);
 
-	// 			redirect('dashboard');
-	// 		} else {
-	// 			$this->session->set_flashdata('gagal_login', 'Maaf, Password anda salah :(');
-	// 			$this->load->view('login_view', $data);
-	// 		}
-	// 	} else {
-	// 		$this->session->set_flashdata('gagal_login', 'Silahkan Pilih pengguna dulu ya :)');
-	// 		$this->load->view('login_view', $data);
-	// 	}
-	// }
+		// 			redirect('home_control');
+		// 		} else {
+		// 			$this->session->set_flashdata('gagal_login', 'Maaf, Password anda salah :(');
+		// 			$this->load->view('login', $data);
+		// 		}
+		// 	} else {
+		// 		$this->session->set_flashdata('gagal_login', 'Silahkan Pilih pengguna dulu ya :)');
+		// 		$this->load->view('login', $data);
+		// 	}
+		// }
 
-	// public function ubahPassword()
-	// {
-	// 	$this->form_validation->set_rules('passBaru', 'Password', 'required|trim|min_length[5]|matches[passVerif]');
-	// 	$this->form_validation->set_rules('passVerif', 'Verifikasi Password', 'required|trim|matches[passBaru]');
+		// public function logout()
+		// {
+		// 	$this->session->unset_userdata('id_pengguna');
+		// 	$this->session->unset_userdata('nama');
+		// 	$this->session->set_flashdata('berhasil_logout', 'Anda telah berhasil log out. Terimkasih :)');
+		// 	$data['title'] = "Login";
+		// 	redirect('login', $data);
+		echo json_encode($this->input->post("nama"));
+	}
 
-	// 	$data['title'] = "Ubah password";
-	// 	if ($this->form_validation->run()) {
-	// 		$password = password_hash($this->$this->input->post("passBaru"), PASSWORD_DEFAULT);
-	// 		$email = $this->session->userdata("reset_email");
+	function coba()
+	{
+		$data['title'] = "Login";
+		$nama = $this->input->post("nama");
+		$password = $this->input->post("pass");
+		$user = $this->db_model->get_where("pengguna", ["id_pengguna" => $nama, "hapus" => 0])->row_array();
 
-	// 		$data = ["password" => $password];
-	// 		$this->database_model->update("user", $data, ["email" => $email]);
-
-	// 		$this->session->unset_userdata('reset_email');
-
-	// 		$this->session->set_flashdata('berhasil_logout', 'Password berhasil diubah. Silahkan Log in :)');
-	// 		redirect('auth');
-	// 	} else {
-	// 		$this->render_auth("auth/resetPassword", $data);
-	// 	}
-	// }
+		if ($user) {
+			if (md5($password) == $user['password']) {
+				$data = [
+					'id_pengguna' => $user['id_pengguna'],
+					'username' => $user['username'],
+					'rule' => $user['rule']
+				];
+				$this->session->set_userdata($data);
+				echo json_encode("");
+			} else {
+				echo json_encode("Maaf Password Salah");
+			}
+		} else {
+			echo json_encode("Maaf Pengguna tidak Ditemukan");
+		}
+	}
 
 	public function logout()
 	{
 		$this->session->unset_userdata('id_pengguna');
 		$this->session->unset_userdata('nama');
-		$this->session->set_flashdata('berhasil_logout', 'Anda telah berhasil log out. Terimkasih :)');
-		$data['title'] = "Login";
-		redirect('login', $data);
+		redirect('login_control');
 	}
 }

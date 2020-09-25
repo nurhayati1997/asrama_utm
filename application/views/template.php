@@ -189,7 +189,7 @@
 			<footer class="footer">
 				<div class="container-fluid">
 					<div class="copyright ml-auto">
-						2020, made with <i class="fa fa-heart heart text-danger"></i> Pengurus Asrama to <a href="">ASRAMA MAHASISWA UTM</a>
+						2020, made with <i class="fa fa-heart heart text-danger"></i> Hamba Allah to <a href="">ASRAMA MAHASISWA UTM</a>
 					</div>
 				</div>
 			</footer>

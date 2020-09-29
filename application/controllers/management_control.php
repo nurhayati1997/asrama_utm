@@ -17,7 +17,11 @@ class management_control extends CI_Controller
 
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("pengguna")->result());
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_all("pengguna")->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'penanggung_jawab' => $this->session->userdata("id_pengguna")))->result());
+		}
 	}
 
 	public function tambah()
@@ -31,6 +35,7 @@ class management_control extends CI_Controller
 			"no_hp" => $this->input->post("no", TRUE),
 			"alamat" => $this->input->post("alamat", TRUE),
 			"rule" => $this->input->post("level", TRUE),
+			"penanggung_jawab" => $this->session->userdata("rule"),
 			"hapus" => 0,
 			"password" => md5(12345)
 		];

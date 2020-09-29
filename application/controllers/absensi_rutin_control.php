@@ -65,6 +65,10 @@ class absensi_rutin_control extends CI_Controller
 	public function get_username()
 	{
 		// echo json_encode("yey");
-		echo json_encode($this->db_model->get_where('pengguna', array('rule' => 0, 'hapus' => 0))->result());
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 1, 'hapus' => 0))->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
+		}
 	}
 }

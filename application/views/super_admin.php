@@ -158,6 +158,7 @@
 								<label for="level">Level</label>
 								<select id="level" class="form-control">
 									<option value="1">Pengurus</option>
+									<option value="2">Warga</option>
 									<option value="0">Super Admin</option>
 								</select>
 							</div>
@@ -247,6 +248,7 @@
 								<label for="ubah_level">Level</label>
 								<select id="ubah_level" class="form-control">
 									<option value="1">Pengurus</option>
+									<option value="2">Warga</option>
 									<option value="0">Super Admin</option>
 								</select>
 							</div>

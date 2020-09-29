@@ -242,7 +242,7 @@
 								<input type="text" class="form-control" id="ubah_alamat" placeholder="Alamat">
 							</div>
 						</div>
-						<div class="col-sm-6" id='rule_hidden'>
+						<div class="col-sm-6" id='ubah_rule_hidden'>
 							<div class="form-group">
 								<label for="ubah_level">Level</label>
 								<select id="ubah_level" class="form-control">
@@ -308,6 +308,15 @@
 			});
 		});
 
+		//hide level
+		if (<?php echo $this->session->userdata("rule") ?> == 0) {
+			document.getElementById("rule_hidden").style.display = "block";
+			document.getElementById("ubah_rule_hidden").style.display = "block";
+		} else {
+			document.getElementById("rule_hidden").style.display = "none";
+			document.getElementById("ubah_rule_hidden").style.display = "none";
+		}
+
 		//datatabel
 		ambil_data();
 	});
@@ -337,13 +346,19 @@
 		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
 			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
 			// console.log("sukses");
+			if (<?php echo $this->session->userdata("rule") ?> == 0) {
+				var level = document.getElementById("level").value;
+			} else {
+				var level = 2;
+			}
+
 			$.ajax({
 				type: 'POST',
 				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
 					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
 					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
 					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value +
-					'&level=' + document.getElementById("level").value,
+					'&level=' + level,
 				url: '<?= base_url() ?>management_control/tambah',
 				dataType: 'json',
 				success: function(data) {
@@ -482,6 +497,11 @@
 	}
 
 	function update(id, cek) {
+		if (<?php echo $this->session->userdata("rule") ?> == 0) {
+			var level = document.getElementById("level").value;
+		} else {
+			var level = 2;
+		}
 		// console.log(document.getElementById("ubah_username").value);
 		if (cek == 0) {
 			$.ajax({
@@ -489,7 +509,7 @@
 				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
 					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
 					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
-					'&pass=' + document.getElementById("ubah_pass").value + '&level=' + document.getElementById("ubah_level").value +
+					'&pass=' + document.getElementById("ubah_pass").value + '&level=' + level +
 					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
 				url: '<?= base_url() ?>management_control/ubah',
 				dataType: 'json',

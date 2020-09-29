@@ -96,9 +96,9 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									<?php echo $this->session->userdata("username"); ?>
-									<span class="user-level"><?php if ($this->session->userdata("username") == 0) {
+									<span class="user-level"><?php if ($this->session->userdata("rule") == 0) {
 																	echo "Super Admin";
-																} else if ($this->session->userdata("username") == 1) {
+																} else if ($this->session->userdata("rule") == 1) {
 																	echo "Pengurus";
 																} else {
 																	echo "Warga";
@@ -120,7 +120,7 @@
 							</span>
 							<h4 class="text-section">Menu</h4>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
 								<p>Management User</p>
@@ -134,7 +134,7 @@
 							</a>
 							<div class="collapse" id="monitoring">
 								<ul class="nav nav-collapse">
-									<li>
+									<li class="warga_hidden">
 										<a href="<?= site_url('absensi_rutin_control') ?>">
 											<span class="sub-item">Absensi Rutin</span>
 										</a>
@@ -149,12 +149,12 @@
 											<span class="sub-item">Perizinan</span>
 										</a>
 									</li>
-									<li>
+									<li class="warga_hidden">
 										<a href="<?= site_url('pelanggaran_control') ?>">
 											<span class="sub-item">Pelanggaran</span>
 										</a>
 									</li>
-									<li>
+									<li class="warga_hidden">
 										<a href="<?= site_url('catatan_control') ?>">
 											<span class="sub-item">Catatan</span>
 										</a>
@@ -174,13 +174,13 @@
 								<p>Kritik & Saran</p>
 							</a>
 						</li>
-						<li class="nav-section">
+						<li class="nav-section warga_hidden">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
 							<h4 class="text-section">Penilaian</h4>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('evaluasi_control') ?>">
 								<i class="fas fa-exclamation-triangle"></i>
 								<p>Evaluasi</p>
@@ -301,8 +301,8 @@
 	<script src="<?= base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
 
 	<!-- jQuery Vector Maps -->
-	<script src="<?= base_url() ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-	<script src="<?= base_url() ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+	<!-- <script src="<?= base_url() ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="<?= base_url() ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script> -->
 
 	<!-- Sweet Alert -->
 	<script src="<?= base_url() ?>assets/js/plugin/sweetalert/sweetalert.min.js"></script>
@@ -311,147 +311,155 @@
 	<script src="<?= base_url() ?>assets/js/atlantis.min.js"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="<?= base_url() ?>assets/js/setting-demo.js"></script>
-	<script src="<?= base_url() ?>assets/js/demo.js"></script>
+	<!-- <script src="<?= base_url() ?>assets/js/setting-demo.js"></script>
+	<script src="<?= base_url() ?>assets/js/demo.js"></script> -->
 	<script>
-		Circles.create({
-			id: 'circles-1',
-			radius: 45,
-			value: 60,
-			maxValue: 100,
-			width: 7,
-			text: 5,
-			colors: ['#f1f1f1', '#FF9E27'],
-			duration: 400,
-			wrpClass: 'circles-wrp',
-			textClass: 'circles-text',
-			styleWrapper: true,
-			styleText: true
-		})
+		if (<?php echo $this->session->userdata("rule") ?> == 2) {
+			var divsToHide = document.getElementsByClassName("warga_hidden"); //divsToHide is an array
+			for (var i = 0; i < divsToHide.length; i++) {
+				divsToHide[i].style.visibility = "hidden"; // or
+				divsToHide[i].style.display = "none"; // depending on what you're doing
+			};
+		}
+		// Circles.create({
+		// 	id: 'circles-1',
+		// 	radius: 45,
+		// 	value: 60,
+		// 	maxValue: 100,
+		// 	width: 7,
+		// 	text: 5,
+		// 	colors: ['#f1f1f1', '#FF9E27'],
+		// 	duration: 400,
+		// 	wrpClass: 'circles-wrp',
+		// 	textClass: 'circles-text',
+		// 	styleWrapper: true,
+		// 	styleText: true
+		// })
 
-		Circles.create({
-			id: 'circles-2',
-			radius: 45,
-			value: 70,
-			maxValue: 100,
-			width: 7,
-			text: 36,
-			colors: ['#f1f1f1', '#2BB930'],
-			duration: 400,
-			wrpClass: 'circles-wrp',
-			textClass: 'circles-text',
-			styleWrapper: true,
-			styleText: true
-		})
+		// Circles.create({
+		// 	id: 'circles-2',
+		// 	radius: 45,
+		// 	value: 70,
+		// 	maxValue: 100,
+		// 	width: 7,
+		// 	text: 36,
+		// 	colors: ['#f1f1f1', '#2BB930'],
+		// 	duration: 400,
+		// 	wrpClass: 'circles-wrp',
+		// 	textClass: 'circles-text',
+		// 	styleWrapper: true,
+		// 	styleText: true
+		// })
 
-		Circles.create({
-			id: 'circles-3',
-			radius: 45,
-			value: 40,
-			maxValue: 100,
-			width: 7,
-			text: 12,
-			colors: ['#f1f1f1', '#F25961'],
-			duration: 400,
-			wrpClass: 'circles-wrp',
-			textClass: 'circles-text',
-			styleWrapper: true,
-			styleText: true
-		})
+		// Circles.create({
+		// 	id: 'circles-3',
+		// 	radius: 45,
+		// 	value: 40,
+		// 	maxValue: 100,
+		// 	width: 7,
+		// 	text: 12,
+		// 	colors: ['#f1f1f1', '#F25961'],
+		// 	duration: 400,
+		// 	wrpClass: 'circles-wrp',
+		// 	textClass: 'circles-text',
+		// 	styleWrapper: true,
+		// 	styleText: true
+		// })
 
-		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+		// var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-		var mytotalIncomeChart = new Chart(totalIncomeChart, {
-			type: 'bar',
-			data: {
-				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-				datasets: [{
-					label: "Total Income",
-					backgroundColor: '#ff9e27',
-					borderColor: 'rgb(23, 125, 255)',
-					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-				}],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				legend: {
-					display: false,
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							display: false //this will remove only the label
-						},
-						gridLines: {
-							drawBorder: false,
-							display: false
-						}
-					}],
-					xAxes: [{
-						gridLines: {
-							drawBorder: false,
-							display: false
-						}
-					}]
-				},
-			}
-		});
+		// var mytotalIncomeChart = new Chart(totalIncomeChart, {
+		// 	type: 'bar',
+		// 	data: {
+		// 		labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+		// 		datasets: [{
+		// 			label: "Total Income",
+		// 			backgroundColor: '#ff9e27',
+		// 			borderColor: 'rgb(23, 125, 255)',
+		// 			data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+		// 		}],
+		// 	},
+		// 	options: {
+		// 		responsive: true,
+		// 		maintainAspectRatio: false,
+		// 		legend: {
+		// 			display: false,
+		// 		},
+		// 		scales: {
+		// 			yAxes: [{
+		// 				ticks: {
+		// 					display: false //this will remove only the label
+		// 				},
+		// 				gridLines: {
+		// 					drawBorder: false,
+		// 					display: false
+		// 				}
+		// 			}],
+		// 			xAxes: [{
+		// 				gridLines: {
+		// 					drawBorder: false,
+		// 					display: false
+		// 				}
+		// 			}]
+		// 		},
+		// 	}
+		// });
 
-		$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-			type: 'line',
-			height: '70',
-			width: '100%',
-			lineWidth: '2',
-			lineColor: '#ffa534',
-			fillColor: 'rgba(255, 165, 52, .14)'
-		});
+		// $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+		// 	type: 'line',
+		// 	height: '70',
+		// 	width: '100%',
+		// 	lineWidth: '2',
+		// 	lineColor: '#ffa534',
+		// 	fillColor: 'rgba(255, 165, 52, .14)'
+		// });
 	</script>
 	<script>
 		$(document).ready(function() {
-			$('#basic-datatables').DataTable({});
 
-			$('#multi-filter-select').DataTable({
-				"pageLength": 5,
-				initComplete: function() {
-					this.api().columns().every(function() {
-						var column = this;
-						var select = $('<select class="form-control"><option value=""></option></select>')
-							.appendTo($(column.footer()).empty())
-							.on('change', function() {
-								var val = $.fn.dataTable.util.escapeRegex(
-									$(this).val()
-								);
+			// $('#basic-datatables').DataTable({});
 
-								column
-									.search(val ? '^' + val + '$' : '', true, false)
-									.draw();
-							});
+			// $('#multi-filter-select').DataTable({
+			// 	"pageLength": 5,
+			// 	initComplete: function() {
+			// 		this.api().columns().every(function() {
+			// 			var column = this;
+			// 			var select = $('<select class="form-control"><option value=""></option></select>')
+			// 				.appendTo($(column.footer()).empty())
+			// 				.on('change', function() {
+			// 					var val = $.fn.dataTable.util.escapeRegex(
+			// 						$(this).val()
+			// 					);
 
-						column.data().unique().sort().each(function(d, j) {
-							select.append('<option value="' + d + '">' + d + '</option>')
-						});
-					});
-				}
-			});
+			// 					column
+			// 						.search(val ? '^' + val + '$' : '', true, false)
+			// 						.draw();
+			// 				});
 
-			// Add Row
-			$('#add-row').DataTable({
-				"pageLength": 5,
-			});
+			// 			column.data().unique().sort().each(function(d, j) {
+			// 				select.append('<option value="' + d + '">' + d + '</option>')
+			// 			});
+			// 		});
+			// 	}
+			// });
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+			// // Add Row
+			// $('#add-row').DataTable({
+			// 	"pageLength": 5,
+			// });
 
-			$('#addRowButton').click(function() {
-				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
-					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
-				]);
-				$('#addRowModal').modal('hide');
+			// var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
-			});
+			// $('#addRowButton').click(function() {
+			// 	$('#add-row').dataTable().fnAddData([
+			// 		$("#addName").val(),
+			// 		$("#addPosition").val(),
+			// 		$("#addOffice").val(),
+			// 		action
+			// 	]);
+			// 	$('#addRowModal').modal('hide');
+
+			// });
 		});
 	</script>
 </body>

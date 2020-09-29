@@ -30,7 +30,7 @@ class management_control extends CI_Controller
 			"kamar" => $this->input->post("kamar", TRUE),
 			"no_hp" => $this->input->post("no", TRUE),
 			"alamat" => $this->input->post("alamat", TRUE),
-			"rule" => 0,
+			"rule" => $this->input->post("level", TRUE),
 			"hapus" => 0,
 			"password" => md5(12345)
 		];
@@ -52,7 +52,8 @@ class management_control extends CI_Controller
 			"gedung" => $this->input->post("gedung", TRUE),
 			"kamar" => $this->input->post("kamar", TRUE),
 			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE)
+			"alamat" => $this->input->post("alamat", TRUE),
+			"rule" => $this->input->post("level", TRUE)
 		];
 		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
 

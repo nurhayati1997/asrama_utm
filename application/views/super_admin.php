@@ -147,10 +147,19 @@
 								<input type="number" maxlength="13" class="form-control" id="no" placeholder="No Telp">
 							</div>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="alamat">Alamat</label>
 								<input type="text" class="form-control" id="alamat" placeholder="Alamat">
+							</div>
+						</div>
+						<div class="col-sm-6" id='rule_hidden'>
+							<div class="form-group">
+								<label for="level">Level</label>
+								<select id="level" class="form-control">
+									<option value="1">Pengurus</option>
+									<option value="0">Super Admin</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -227,10 +236,19 @@
 								<input type="number" maxlength="13" class="form-control" id="ubah_no" placeholder="No Telp">
 							</div>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="ubah_alamat">Alamat</label>
 								<input type="text" class="form-control" id="ubah_alamat" placeholder="Alamat">
+							</div>
+						</div>
+						<div class="col-sm-6" id='rule_hidden'>
+							<div class="form-group">
+								<label for="ubah_level">Level</label>
+								<select id="ubah_level" class="form-control">
+									<option value="1">Pengurus</option>
+									<option value="0">Super Admin</option>
+								</select>
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -324,7 +342,8 @@
 				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
 					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
 					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
-					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
+					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value +
+					'&level=' + document.getElementById("level").value,
 				url: '<?= base_url() ?>management_control/tambah',
 				dataType: 'json',
 				success: function(data) {
@@ -333,6 +352,7 @@
 					document.getElementById("jk").value = "";
 					document.getElementById("username").value = "";
 					document.getElementById("gedung").value = "";
+					document.getElementById("level").value = "";
 					document.getElementById("kamar").value = "";
 					document.getElementById("no").value = "";
 					document.getElementById("alamat").value = "";
@@ -429,6 +449,7 @@
 					document.getElementById("ubah_kamar").value = data[i].kamar;
 					document.getElementById("ubah_no").value = data[i].no_hp;
 					document.getElementById("ubah_alamat").value = data[i].alamat;
+					document.getElementById("ubah_level").value = data[i].rule;
 					document.getElementById("ubah_pass").value = '';
 					document.getElementById("ubah_cpass").value = '';
 
@@ -468,7 +489,7 @@
 				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
 					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
 					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
-					'&pass=' + document.getElementById("ubah_pass").value +
+					'&pass=' + document.getElementById("ubah_pass").value + '&level=' + document.getElementById("ubah_level").value +
 					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
 				url: '<?= base_url() ?>management_control/ubah',
 				dataType: 'json',

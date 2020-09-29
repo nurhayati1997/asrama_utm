@@ -153,13 +153,21 @@
 								<input type="text" class="form-control" id="alamat" placeholder="Alamat">
 							</div>
 						</div>
-						<div class="col-sm-6" id='rule_hidden'>
+						<div class="col-sm-6 rule_hidden">
 							<div class="form-group">
 								<label for="level">Level</label>
 								<select id="level" class="form-control">
 									<option value="1">Pengurus</option>
 									<option value="2">Warga</option>
 									<option value="0">Super Admin</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6 rule_hidden">
+							<div class="form-group">
+								<label for="pj">Penanggung Jawab</label>
+								<select id="pj" class="form-control">
+
 								</select>
 							</div>
 						</div>
@@ -243,13 +251,21 @@
 								<input type="text" class="form-control" id="ubah_alamat" placeholder="Alamat">
 							</div>
 						</div>
-						<div class="col-sm-6" id='ubah_rule_hidden'>
+						<div class="col-sm-6 rule_hidden">
 							<div class="form-group">
 								<label for="ubah_level">Level</label>
 								<select id="ubah_level" class="form-control">
 									<option value="1">Pengurus</option>
 									<option value="2">Warga</option>
 									<option value="0">Super Admin</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6 rule_hidden">
+							<div class="form-group">
+								<label for="ubah_pj">Penanggung Jawab</label>
+								<select id="ubah_pj" class="form-control">
+
 								</select>
 							</div>
 						</div>
@@ -312,16 +328,42 @@
 
 		//hide level
 		if (<?php echo $this->session->userdata("rule") ?> == 0) {
-			document.getElementById("rule_hidden").style.display = "block";
-			document.getElementById("ubah_rule_hidden").style.display = "block";
+			var divsToHide = document.getElementsByClassName("rule_hidden"); //divsToHide is an array
+			for (var i = 0; i < divsToHide.length; i++) {
+				divsToHide[i].style.display = "block"; // depending on what you're doing
+			};
+			// document.getElementById("rule_hidden").style.display = "block";
+			// document.getElementById("ubah_rule_hidden").style.display = "block";
 		} else {
-			document.getElementById("rule_hidden").style.display = "none";
-			document.getElementById("ubah_rule_hidden").style.display = "none";
+			// document.getElementById("rule_hidden").style.display = "none";
+			// document.getElementById("ubah_rule_hidden").style.display = "none";
+			var divsToHide = document.getElementsByClassName("rule_hidden"); //divsToHide is an array
+			for (var i = 0; i < divsToHide.length; i++) {
+				divsToHide[i].style.display = "none"; // depending on what you're doing
+			};
 		}
-
+		get_list();
 		//datatabel
 		ambil_data();
 	});
+
+	function get_list() {
+		$.ajax({
+			type: 'POST',
+			url: '<?= base_url() ?>management_control/listUser',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				var baris = '<option value="null">-Tidak Ada-</option>';
+				for (var i = 0; i < data.length; i++) {
+					baris += '<option value="' + data[i].id_pengguna + '">' + data[i].username + '</option>';
+				}
+
+				$("#pj").html(baris);
+				$("#ubah_pj").html(baris);
+			}
+		});
+	}
 
 	function tambah() {
 		if (document.getElementById("alamat").value == "") {
@@ -350,8 +392,10 @@
 			// console.log("sukses");
 			if (<?php echo $this->session->userdata("rule") ?> == 0) {
 				var level = document.getElementById("level").value;
+				var pj = document.getElementById("pj").value;
 			} else {
 				var level = 2;
+				var pj = <?php echo $this->session->userdata("id_pengguna") ?>;
 			}
 
 			$.ajax({
@@ -360,7 +404,7 @@
 					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
 					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
 					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value +
-					'&level=' + level,
+					'&level=' + level + '&pj=' + pj,
 				url: '<?= base_url() ?>management_control/tambah',
 				dataType: 'json',
 				success: function(data) {
@@ -373,6 +417,7 @@
 					document.getElementById("kamar").value = "";
 					document.getElementById("no").value = "";
 					document.getElementById("alamat").value = "";
+					document.getElementById("pj").value = "";
 
 					ambil_data();
 
@@ -472,6 +517,7 @@
 					document.getElementById("ubah_no").value = data[i].no_hp;
 					document.getElementById("ubah_alamat").value = data[i].alamat;
 					document.getElementById("ubah_level").value = data[i].rule;
+					document.getElementById("ubah_pj").value = data[i].penanggung_jawab;
 					document.getElementById("ubah_pass").value = '';
 					document.getElementById("ubah_cpass").value = '';
 
@@ -505,9 +551,11 @@
 
 	function update(id, cek) {
 		if (<?php echo $this->session->userdata("rule") ?> == 0) {
-			var level = document.getElementById("level").value;
+			var level = document.getElementById("ubah_level").value;
+			var pj = document.getElementById("ubah_pj").value;
 		} else {
 			var level = 2;
+			var pj = <?php echo $this->session->userdata("id_pengguna") ?>;
 		}
 		// console.log(document.getElementById("ubah_username").value);
 		if (cek == 0) {
@@ -516,7 +564,7 @@
 				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
 					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
 					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
-					'&pass=' + document.getElementById("ubah_pass").value + '&level=' + level +
+					'&pass=' + document.getElementById("ubah_pass").value + '&level=' + level + '&pj=' + pj +
 					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
 				url: '<?= base_url() ?>management_control/ubah',
 				dataType: 'json',

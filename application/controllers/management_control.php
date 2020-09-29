@@ -24,6 +24,11 @@ class management_control extends CI_Controller
 		}
 	}
 
+	public function listUser()
+	{
+		echo json_encode($this->db_model->get_where('pengguna', array('rule' => 1))->result());
+	}
+
 	public function tambah()
 	{
 		$data = [
@@ -35,7 +40,7 @@ class management_control extends CI_Controller
 			"no_hp" => $this->input->post("no", TRUE),
 			"alamat" => $this->input->post("alamat", TRUE),
 			"rule" => $this->input->post("level", TRUE),
-			"penanggung_jawab" => $this->session->userdata("rule"),
+			"penanggung_jawab" => $this->input->post("pj", TRUE),
 			"hapus" => 0,
 			"password" => md5(12345)
 		];
@@ -58,7 +63,8 @@ class management_control extends CI_Controller
 			"kamar" => $this->input->post("kamar", TRUE),
 			"no_hp" => $this->input->post("no", TRUE),
 			"alamat" => $this->input->post("alamat", TRUE),
-			"rule" => $this->input->post("level", TRUE)
+			"rule" => $this->input->post("level", TRUE),
+			"penanggung_jawab" => $this->input->post("pj", TRUE)
 		];
 		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
 

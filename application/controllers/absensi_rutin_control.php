@@ -17,7 +17,11 @@ class absensi_rutin_control extends CI_Controller
 
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("v_absensi_rutin")->result());
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_all("v_absensi_rutin")->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('v_absensi_rutin', array('rule' => 2, 'penanggung_jawab' => $this->session->userdata("id_pengguna")))->result());
+		}
 	}
 
 	public function tambah()

@@ -15,25 +15,24 @@ class kegiatan_nonrutin_control extends CI_Controller
 		$this->template->load('template', 'kegiatan_nonrutin');
 	}
 
+
 	public function tampil()
 	{
-		echo json_encode($this->db_model->get_all("pengguna")->result());
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_all("v_kegiatan_nonrutin")->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('v_kegiatan_nonrutin', array('rule' => 2, 'penanggung_jawab' => $this->session->userdata("id_pengguna")))->result());
+		}
 	}
 
 	public function tambah()
 	{
 		$data = [
-			"jurusan" => $this->input->post("jurusan", TRUE),
-			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("username", TRUE),
-			"gedung" => $this->input->post("gedung", TRUE),
-			"kamar" => $this->input->post("kamar", TRUE),
-			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE),
-			"rule" => 0,
-			"password" => md5(12345)
+			"id_pengguna" => $this->input->post("id", TRUE),
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"jenis_kegiatan" => $this->input->post("jk", TRUE)
 		];
-		$this->db_model->insert('pengguna', $data);
+		$this->db_model->insert('kegiatan_norutin', $data);
 		echo json_encode($data);
 	}
 
@@ -45,27 +44,27 @@ class kegiatan_nonrutin_control extends CI_Controller
 	public function ubah()
 	{
 		$data = [
-			"jurusan" => $this->input->post("jurusan", TRUE),
-			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("user", TRUE),
-			"gedung" => $this->input->post("gedung", TRUE),
-			"kamar" => $this->input->post("kamar", TRUE),
-			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE)
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"jenis_kegiatan" => $this->input->post("jk", TRUE)
 		];
-		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
+		$this->db_model->update('kegiatan_nonrutin', $data, array('id_kegiatan_nonrutin' => $this->input->post('id', TRUE)));
 
-		if ($this->input->post("pass", TRUE) != "") {
-			$data = [
-				"password" => md5($this->input->post("pass", TRUE))
-			];
-			$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
-		}
 		echo json_encode("");
 	}
 
 	public function hapus()
 	{
-		echo json_encode($this->db_model->delete("pengguna", ['id_pengguna' => $this->input->post('id', TRUE)]));
+		echo json_encode($this->db_model->delete("kegiatan_nonrutin", ['id_kegiatan_nonrutin' => $this->input->post('id', TRUE)]));
 	}
+
+	public function get_username()
+	{
+		// echo json_encode("yey");
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 1, 'hapus' => 0))->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
+		}
+	}
+
 }

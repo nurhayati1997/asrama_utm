@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"data": "id_kegiatan_nonrutin",
+					"data": "id_absensi_rutin",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +
@@ -345,13 +345,14 @@
 	}
 
 	function ubah_list(id) {
+		// console.log(id);
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>kegiatan_nrutin_control/ubah_list',
+			url: '<?= base_url() ?>kegiatan_nonrutin_control/ubah_list',
 			dataType: 'json',
 			success: function(data) {
-				// console.log(data);
+				console.log(data);
 				for (var i = 0; i < data.length; i++) {
 
 					document.getElementById("ubah_username").value = data[i].username;

@@ -38,7 +38,7 @@ class kegiatan_nonrutin_control extends CI_Controller
 
 	function ubah_list()
 	{
-		echo json_encode($this->db_model->get_where('pengguna', ["id_pengguna" => $this->input->post('id', TRUE)])->result());
+		echo json_encode($this->db_model->get_where('v_kegiatan_nonrutin', ["id_absensi_rutin" => $this->input->post('id', TRUE)])->result());
 	}
 
 	public function ubah()

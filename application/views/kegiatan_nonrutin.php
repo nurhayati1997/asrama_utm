@@ -112,20 +112,20 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="username">Tanggal</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<input type="date" class="form-control" id="tanggal" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="jk">Jenis Kegiatan</label>
 								<select id="jk" class="form-control">
-									<option value="TARBIATUL ARABI">TARBIATUL ARABI</option>
-									<option value="ENGHLISH CLUB">ENGHLISH CLUB</option>
-									<option value="KELAS ILMIAH">KELAS ILMIAH</option>
-									<option value="BANJARI">BANJARI</option>
-									<option value="DORMITORY">DORMITORY</option>
-									<option value="BENGKEL SENI">BENGKEL SENI</option>
-									<option value="TARTIL">TARTIL</option>
+									<option value="0">TARBIATUL ARABI</option>
+									<option value="1">ENGHLISH CLUB</option>
+									<option value="2">KELAS ILMIAH</option>
+									<option value="3">BANJARI</option>
+									<option value="4">DORMITORY</option>
+									<option value="5">BENGKEL SENI</option>
+									<option value="6">TARTIL</option>
 								</select>
 							</div>
 						</div>
@@ -264,17 +264,19 @@
 			document.getElementById("username").focus();
 		}
 		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("jk").value != "") {
-			// console.log("sukses");
+			// console.log(document.getElementById("username").value);
+			// console.log(document.getElementById("tanggal").value);
+			console.log(document.getElementById("jk").value);
 			var pengguna = document.getElementById("username").value.split(' | ');
 
 			$.ajax({
 				type: 'POST',
 				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
 					'&tanggal=' + document.getElementById("tanggal").value + '&jk=' + document.getElementById("jk").value,
-				url: '<?= base_url() ?>kegiatan_nonrutin_control/tambah',
+				url: '<?= site_url("kegiatan_nonrutin_control/tambah_data") ?>',
 				dataType: 'json',
 				success: function(data) {
-					// console.log(data);
+					console.log(data);
 					document.getElementById("username").value = "";
 					document.getElementById("tanggal").value = "";
 					document.getElementById("jk").value = "";
@@ -309,17 +311,13 @@
 							return "TARBIATUL ARABI"
 						} else if (data == 1) {
 							return "ENGHLISH CLUB"
-						} else {
 						} else if (data == 2) {
 							return "KELAS ILMIAH"
-						} else {
 						} else if (data == 3) {
 							return "BANJARI"
-						} else {
 						} else if (data == 4) {
 							return "ORMITORY"
-						} else {
-						} else if (data == 2) {
+						} else if (data == 5) {
 							return "BENGKEL SENI"
 						} else {
 							return "TARTIL"

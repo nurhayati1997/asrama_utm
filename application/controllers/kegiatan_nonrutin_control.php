@@ -25,14 +25,14 @@ class kegiatan_nonrutin_control extends CI_Controller
 		}
 	}
 
-	public function tambah()
+	public function tambah_data()
 	{
 		$data = [
 			"id_pengguna" => $this->input->post("id", TRUE),
 			"tanggal" => $this->input->post("tanggal", TRUE),
 			"jenis_kegiatan" => $this->input->post("jk", TRUE)
 		];
-		$this->db_model->insert('kegiatan_norutin', $data);
+		$this->db_model->insert('kegiatan_nonrutin', $data);
 		echo json_encode($data);
 	}
 

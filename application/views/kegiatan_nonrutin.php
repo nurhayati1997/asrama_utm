@@ -380,7 +380,7 @@
 			type: 'POST',
 			data: 'id=' + id + '&tanggal=' + document.getElementById("ubah_tanggal").value +
 				'&jk=' + document.getElementById("ubah_jk").value,
-			url: '<?= base_url() ?>absensi_rutin_control/ubah',
+			url: '<?= base_url() ?>kegiatan_nonrutin_control/ubah',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
@@ -407,7 +407,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/hapus',
+			url: '<?= base_url() ?>kegiatan_nonrutin_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);

@@ -102,19 +102,20 @@
 			<div class="modal-body">
 				<form>
 					<div class="row">
+						
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="username">Nama</label>
-								<input type="text" class="form-control" id="username" placeholder="Username">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="username">Tanggal</label>
 								<input list="list_username" id="username" name="username" class="form-control" required>
 								<datalist id="list_username">
 
 								</datalist>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="tanggal">Tanggal</label>
+								<input type="date" class="form-control" id="tanggal" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-12">
@@ -309,11 +310,7 @@
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && 
-			document.getElementById("tanggal").value != "" && 
-			document.getElementById("catatan_pengelola").value != "" && 
-			document.getElementById("catatan_ph").value != "" && 
-			document.getElementById("catatan_pg").value != "" ) {
+		if (document.getElementById("username").value != "" &&  document.getElementById("tanggal").value != "" && document.getElementById("catatan_pengelola").value != "" && document.getElementById("catatan_ph").value != "" && document.getElementById("catatan_pg").value != "" ) {
 			// console.log("sukses");
 			var pengguna = document.getElementById("username").value.split(' | ');
 			$.ajax({

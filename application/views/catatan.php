@@ -374,7 +374,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/hapus',
+			url: '<?= base_url() ?>catatan_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);

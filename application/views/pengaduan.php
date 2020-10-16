@@ -90,7 +90,7 @@
 			<div class="modal-header no-bd">
 				<h5 class="modal-title">
 					<span class="fw-mediumbold">
-						Data Master</span>
+						Data</span>
 					<span class="fw-light">
 						Pengaduan
 					</span>
@@ -111,25 +111,28 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="username">Tanggal</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<input list="list_username" id="username" name="username" class="form-control" required>
+								<datalist id="list_username">
+
+								</datalist>
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Pengelola</label>
-								<input type="text" class="form-control" id="username" placeholder="Pengelola Asrama">
+								<label for="catatan_pengelola">Pengelola</label>
+								<input id="catatan_pengelola" type="text" class="form-control"  placeholder="Pengelola Asrama">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Pengurus Harian</label>
-								<input type="text" class="form-control" id="username" placeholder="Pengurus Harian Asrama">
+								<label for="catatan_ph">Pengurus Harian</label>
+								<input id="catatan_ph" type="text" class="form-control"  placeholder="Pengurus Harian Asrama">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Pengurus Gedung</label>
-								<input type="text" class="form-control" id="username" placeholder="Pengurus Gedung Asrama">
+								<label for="catatan_pg">Pengurus Gedung</label>
+								<input id="catatan_pg" type="text" class="form-control"  placeholder="Pengurus Gedung Asrama">
 							</div>
 						</div>
 					</div>
@@ -271,50 +274,64 @@
 
 		//datatabel
 		ambil_data();
+		get_username();
 	});
 
+	function get_username() {
+		$.ajax({
+			type: 'POST',
+			url: '<?= site_url() ?>pengaduan_control/get_username',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
+					html += '<option value="' + data[i].id_pengguna + ' | ' + data[i].username + ' | ' + data[i].jurusan + '"></option>';
+				}
+				$("#list_username").html(html);
+			}
+		});
+	}
+
 	function tambah() {
-		if (document.getElementById("alamat").value == "") {
-			document.getElementById("alamat").focus();
+		if (document.getElementById("tanggal").value == "") {
+			document.getElementById("tanggal").focus();
 		}
-		if (document.getElementById("no").value == "") {
-			document.getElementById("no").focus();
+		if (document.getElementById("catatan_pengelola").value == "") {
+			document.getElementById("catatan_pengelola").focus();
 		}
-		if (document.getElementById("kamar").value == "") {
-			document.getElementById("kamar").focus();
+		if (document.getElementById("catatan_ph").value == "") {
+			document.getElementById("catatan_ph").focus();
 		}
-		if (document.getElementById("gedung").value == "") {
-			document.getElementById("gedung").focus();
-		}
-		if (document.getElementById("jurusan").value == "") {
-			document.getElementById("jurusan").focus();
-		}
-		if (document.getElementById("jk").value == "") {
-			document.getElementById("jk").focus();
+		if (document.getElementById("catatan_pg").value == "") {
+			document.getElementById("catatan_pg").focus();
 		}
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
-			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
+		if (document.getElementById("username").value != "" && 
+			document.getElementById("tanggal").value != "" && 
+			document.getElementById("catatan_pengelola").value != "" && 
+			document.getElementById("catatan_ph").value != "" && 
+			document.getElementById("catatan_pg").value != "" ) {
 			// console.log("sukses");
+			var pengguna = document.getElementById("username").value.split(' | ');
 			$.ajax({
 				type: 'POST',
-				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
-					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
-					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
-					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
-				url: '<?= base_url() ?>management_control/tambah',
+				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
+					'&tanggal=' + document.getElementById("tanggal").value + 
+					'&catatan_pengelola=' + document.getElementById("catatan_pengelola").value +
+					'&catatan_ph=' + document.getElementById("catatan_ph").value + 
+					'&catatan_pg=' + document.getElementById("catatan_pg").value ,
+				url: '<?= base_url() ?>pengaduan_control/tambah_data',
 				dataType: 'json',
 				success: function(data) {
 					// console.log(data);
-					document.getElementById("jurusan").value = "";
-					document.getElementById("jk").value = "";
 					document.getElementById("username").value = "";
-					document.getElementById("gedung").value = "";
-					document.getElementById("kamar").value = "";
-					document.getElementById("no").value = "";
-					document.getElementById("alamat").value = "";
+					document.getElementById("tanggal").value = "";
+					document.getElementById("catatan_pengelola").value = "";
+					document.getElementById("catatan_ph").value = "";
+					document.getElementById("catatan_pg").value = "";
 
 					ambil_data();
 
@@ -329,47 +346,27 @@
 		$('#myTable').DataTable({
 			destroy: true,
 			"ajax": {
-				"url": "<?php echo site_url("management_control/tampil") ?>",
+				"url": "<?php echo site_url("pengaduan_control/tampil") ?>",
 				"dataSrc": ""
 			},
 			"columns": [{
 					"data": "username"
 				},
 				{
-					"data": "jenis_kelamin",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == "0") {
-							return "Perempuan"
-						} else {
-							return "Laki-laki"
-						}
-					}
+					"data": "tanggal"
 				},
 				{
-					"data": "jurusan"
+					"data": "catatan_pengelola"
 				},
 				{
-					"data": "gedung"
+					"data": "catatan_ph"
 				},
 				{
-					"data": "kamar"
+					"data": "catatan_pg"
 				},
+				
 				{
-					"data": "rule",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "Super Admin"
-						} else if (data == 1) {
-							return "Pengurus"
-						} else {
-							return "Warga"
-						}
-					}
-				},
-				{
-					"data": "id_pengguna",
+					"data": "id_catatan_to_asrama",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +
@@ -435,27 +432,6 @@
 		update(id, cek);
 	}
 
-	function update(id, cek) {
-		// console.log(document.getElementById("ubah_username").value);
-		if (cek == 0) {
-			$.ajax({
-				type: 'POST',
-				data: 'id=' + id + '&user=' + document.getElementById("ubah_user").value +
-					'&jk=' + document.getElementById("ubah_jk").value + '&jurusan=' + document.getElementById("ubah_jurusan").value +
-					'&gedung=' + document.getElementById("ubah_gedung").value + '&kamar=' + document.getElementById("ubah_kamar").value +
-					'&pass=' + document.getElementById("ubah_pass").value +
-					'&no=' + document.getElementById("ubah_no").value + '&alamat=' + document.getElementById("ubah_alamat").value,
-				url: '<?= base_url() ?>management_control/ubah',
-				dataType: 'json',
-				success: function(data) {
-					// console.log(data);
-					$('#ubahModal').modal('hide');
-
-					ambil_data();
-				}
-			});
-		}
-	}
 
 	function hapus_list(id) {
 		var html = '<button onclick="hapus(' + id + ')" id="hapus_button" type="button" data-dismiss="modal" class="btn btn-danger">Hapus</button>';

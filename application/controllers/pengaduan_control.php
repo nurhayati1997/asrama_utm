@@ -66,4 +66,9 @@ class pengaduan_control extends CI_Controller
 
 		echo json_encode("");
 	}
+
+	public function hapus()
+	{
+		echo json_encode($this->db_model->delete("catatan_to_asrama", ['id_catatan_to_asrama' => $this->input->post('id', TRUE)]));
+	}
 }

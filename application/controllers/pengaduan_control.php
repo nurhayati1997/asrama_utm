@@ -47,8 +47,23 @@ class pengaduan_control extends CI_Controller
 		} else if ($this->session->userdata("rule") == 1) {
 			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
         }
-        // else if ($this->session->userdata("rule") == 1) {
-		// 	echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
-		// }
+	}
+
+	function ubah_list()
+	{
+		echo json_encode($this->db_model->get_where('v_pengaduan', ["id_catatan_to_asrama" => $this->input->post('id', TRUE)])->result());
+	}
+
+	public function ubah()
+	{
+		$data = [
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"catatan_pengelola" => $this->input->post("catatan_pengelola", TRUE),
+			"catatan_ph" => $this->input->post("catatan_ph", TRUE),
+			"catatan_pg" => $this->input->post("catatan_pg", TRUE)
+		];
+		$this->db_model->update('catatan_to_asrama', $data, array('id_catatan_to_asrama' => $this->input->post('id', TRUE)));
+
+		echo json_encode("");
 	}
 }

@@ -102,7 +102,6 @@
 			<div class="modal-body">
 				<form>
 					<div class="row">
-						
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="username">Nama</label>
@@ -154,9 +153,9 @@
 			<div class="modal-header no-bd">
 				<h5 class="modal-title">
 					<span class="fw-mediumbold">
-						Data Master</span>
+						Data</span>
 					<span class="fw-light">
-						Kegiatan Non Rutin
+						Pengaduan
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -166,66 +165,34 @@
 			<div class="modal-body">
 				<form>
 					<div class="row">
-						<div class="col-sm-6">
+					<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_user">Username</label>
-								<input type="text" class="form-control" id="ubah_user" placeholder="Username">
+								<label for="username">Nama</label>
+								<input id="ubah_username" name="username" class="form-control" readonly required>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="ubah_jk">Jenis Kelamin</label>
-								<select id="ubah_jk" class="form-control">
-									<option value="0">Perempuan</option>
-									<option value="1">Laki-laki</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="ubah_jurusan">Jurusan</label>
-								<input type="text" class="form-control" id="ubah_jurusan" placeholder="Jurusan">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="ubah_gedung">Gedung</label>
-								<select id="ubah_gedung" class="form-control">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									<option value="D">D</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="ubah_kamar">Kamar</label>
-								<input type="text" class="form-control" id="ubah_kamar" placeholder="Kamar">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="ubah_no">No Telp.</label>
-								<input type="number" maxlength="13" class="form-control" id="ubah_no" placeholder="No Telp">
+								<label for="ubah_tanggal">Tanggal</label>
+								<input type="date" class="form-control" id="ubah_tanggal" placeholder="Username">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="ubah_alamat">Alamat</label>
-								<input type="text" class="form-control" id="ubah_alamat" placeholder="Alamat">
+								<label for="ubah_catatan_pengelola">Pengelola</label>
+								<input id="ubah_catatan_pengelola" type="text" class="form-control"  placeholder="Pengelola Asrama">
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="ubah_pass">Password</label>
-								<input type="password" class="form-control" id="ubah_pass" placeholder="Password">
+								<label for="ubah_catatan_ph">Pengurus Harian</label>
+								<input id="ubah_catatan_ph" type="text" class="form-control"  placeholder="Pengurus Harian Asrama">
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="ubah_cpass">Confirm Password</label>
-								<input type="password" class="form-control" id="ubah_cpass" placeholder="Confirm Password">
+								<label for="ubah_catatan_pg">Pengurus Gedung</label>
+								<input id="ubah_catatan_pg" type="text" class="form-control"  placeholder="Pengurus Gedung Asrama">
 							</div>
 						</div>
 					</div>
@@ -386,20 +353,16 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/ubah_list',
+			url: '<?= base_url() ?>pengaduan_control/ubah_list',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);
 				for (var i = 0; i < data.length; i++) {
-					document.getElementById("ubah_jurusan").value = data[i].jurusan;
-					document.getElementById("ubah_jk").value = data[i].jenis_kelamin;
-					document.getElementById("ubah_user").value = data[i].username;
-					document.getElementById("ubah_gedung").value = data[i].gedung;
-					document.getElementById("ubah_kamar").value = data[i].kamar;
-					document.getElementById("ubah_no").value = data[i].no_hp;
-					document.getElementById("ubah_alamat").value = data[i].alamat;
-					document.getElementById("ubah_pass").value = '';
-					document.getElementById("ubah_cpass").value = '';
+					document.getElementById("ubah_username").value = data[i].username;
+					document.getElementById("ubah_tanggal").value = data[i].tanggal;
+					document.getElementById("ubah_catatan_pengelola").value = data[i].catatan_pengelola;
+					document.getElementById("ubah_catatan_ph").value = data[i].catatan_ph;
+					document.getElementById("ubah_catatan_pg").value = data[i].catatan_pg;
 
 					var html = '<button onclick="ubah(' + id + ')" id="ubah_button" type="button" data-dismiss="modal" class="btn btn-primary">Ubah</button>';
 					$("#ubahModal_tombol").html(html);
@@ -417,16 +380,21 @@
 	}
 
 	function ubah(id) {
-		var cek = 0;
-		if (document.getElementById("ubah_cpass").value != '' || document.getElementById("ubah_pass").value != '') {
-			if (document.getElementById("ubah_cpass").value != document.getElementById("ubah_pass").value) {
-				$("#match-alert").fadeTo(2000, 500).slideUp(500, function() {
-					$("#match-alert").slideUp(500);
-				});
-				cek = 1;
+		// console.log(document.getElementById("ubah_username").value);
+		$.ajax({
+			type: 'POST',
+			data: 'id=' + id + '&tanggal=' + document.getElementById("ubah_tanggal").value +
+				'&catatan_pengelola=' + document.getElementById("ubah_catatan_pengelola").value +
+				'&catatan_ph=' + document.getElementById("ubah_catatan_ph").value +
+				'&catatan_pg=' + document.getElementById("ubah_catatan_pg").value,
+			url: '<?= base_url() ?>pengaduan_control/ubah',
+			dataType: 'json',
+			success: function(data) {
+					// console.log(data);
+				$('#ubahModal').modal('hide');
+				ambil_data();
 			}
-		}
-		update(id, cek);
+		});
 	}
 
 

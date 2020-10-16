@@ -111,8 +111,8 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal</label>
-								<input type="date" class="form-control" id="tanggal" placeholder="Username">
+								<label for="tanggal">Tanggal</label>
+								<input type="date" class="form-control" id="tanggal" placeholder="Tanggal">
 							</div>
 						</div>
 						<div class="col-sm-12">
@@ -123,7 +123,7 @@
 									<option value="1">ENGHLISH CLUB</option>
 									<option value="2">KELAS ILMIAH</option>
 									<option value="3">BANJARI</option>
-									<option value="4">DORMITORY</option>
+									<option value="4">DORMITORY IT</option>
 									<option value="5">BENGKEL SENI</option>
 									<option value="6">TARTIL</option>
 								</select>
@@ -180,7 +180,7 @@
 									<option value="1">ENGHLISH CLUB</option>
 									<option value="2">KELAS ILMIAH</option>
 									<option value="3">BANJARI</option>
-									<option value="4">DORMITORY</option>
+									<option value="4">DORMITORY IT</option>
 									<option value="5">BENGKEL SENI</option>
 									<option value="6">TARTIL</option>
 								</select>
@@ -266,13 +266,14 @@
 		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("jk").value != "") {
 			// console.log(document.getElementById("username").value);
 			// console.log(document.getElementById("tanggal").value);
-			console.log(document.getElementById("jk").value);
+			//console.log(document.getElementById("jk").value);
 			var pengguna = document.getElementById("username").value.split(' | ');
 
 			$.ajax({
 				type: 'POST',
 				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
-					'&tanggal=' + document.getElementById("tanggal").value + '&jk=' + document.getElementById("jk").value,
+					'&tanggal=' + document.getElementById("tanggal").value + 
+					'&jk=' + document.getElementById("jk").value,
 				url: '<?= site_url("kegiatan_nonrutin_control/tambah_data") ?>',
 				dataType: 'json',
 				success: function(data) {
@@ -316,7 +317,7 @@
 						} else if (data == 3) {
 							return "BANJARI"
 						} else if (data == 4) {
-							return "ORMITORY"
+							return "DORMITORY IT"
 						} else if (data == 5) {
 							return "BENGKEL SENI"
 						} else {

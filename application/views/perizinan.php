@@ -106,37 +106,40 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="username">Nama</label>
-								<input type="text" class="form-control" id="username" placeholder="Username">
+								<input list="list_username" id="username" name="username" class="form-control" required>
+								<datalist id="list_username">
+
+								</datalist>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal Izin</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<label for="tgl_izin">Tanggal Izin</label>
+								<input type="date" class="form-control" id="tgl_izin">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Jam Izin</label>
-								<input type="time" class="form-control" id="username" placeholder="Username">
+								<label for="jam_izin">Jam Izin</label>
+								<input type="time" class="form-control" id="jam_izin">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal Kembali</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<label for="tgl_kembali">Tanggal Kembali</label>
+								<input type="date" class="form-control" id="tgl_kembali">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Jam Kembali</label>
-								<input type="time" class="form-control" id="username" placeholder="Username">
+								<label for="jam_kembali">Jam Kembali</label>
+								<input type="time" class="form-control" id="jam_kembali">
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Keterangan</label>
-								<input type="type" class="form-control" id="username" placeholder="Username">
+								<label for="keterangan">Keterangan</label>
+								<input type="type" class="form-control" id="keterangan" placeholder="keterangan">
 							</div>
 						</div>
 					</div>
@@ -278,50 +281,66 @@
 
 		//datatabel
 		ambil_data();
+		get_username();
 	});
 
+	function get_username() {
+		$.ajax({
+			type: 'POST',
+			url: '<?= site_url() ?>perizinan_control/get_username',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
+					html += '<option value="' + data[i].id_pengguna + ' | ' + data[i].username + ' | ' + data[i].jurusan + '"></option>';
+				}
+				$("#list_username").html(html);
+			}
+		});
+	}
+
 	function tambah() {
-		if (document.getElementById("alamat").value == "") {
-			document.getElementById("alamat").focus();
+		if (document.getElementById("tgl_izin").value == "") {
+			document.getElementById("tgl_izin").focus();
 		}
-		if (document.getElementById("no").value == "") {
-			document.getElementById("no").focus();
+		if (document.getElementById("jam_izin").value == "") {
+			document.getElementById("jam_izin").focus();
 		}
-		if (document.getElementById("kamar").value == "") {
-			document.getElementById("kamar").focus();
+		if (document.getElementById("tgl_kembali").value == "") {
+			document.getElementById("tgl_kembali").focus();
 		}
-		if (document.getElementById("gedung").value == "") {
-			document.getElementById("gedung").focus();
+		if (document.getElementById("jam_kembali").value == "") {
+			document.getElementById("jam_kembali").focus();
 		}
-		if (document.getElementById("jurusan").value == "") {
-			document.getElementById("jurusan").focus();
-		}
-		if (document.getElementById("jk").value == "") {
-			document.getElementById("jk").focus();
+		if (document.getElementById("keterangan").value == "") {
+			document.getElementById("keterangan").focus();
 		}
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
-			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
+		if (document.getElementById("username").value != "" && document.getElementById("tgl_izin").value != "" && document.getElementById("jam_izin").value != "" &&
+			document.getElementById("tgl_kembali").value != "" && document.getElementById("jam_kembali").value != "" && document.getElementById("keterangan").value != "") {
 			// console.log("sukses");
+			var pengguna = document.getElementById("username").value.split(' | ');
 			$.ajax({
 				type: 'POST',
-				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
-					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
-					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
-					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
-				url: '<?= base_url() ?>management_control/tambah',
+				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
+					'&tgl_izin=' + document.getElementById("tgl_izin").value + 
+					'&jam_izin=' + document.getElementById("jam_izin").value + 
+					'&tgl_kembali=' + document.getElementById("tgl_kembali").value + 
+					'&jam_kembali=' + document.getElementById("jam_kembali").value + 
+					'&keterangan=' + document.getElementById("keterangan").value,
+				url: '<?= site_url("perizinan_control/tambah_data") ?>',
 				dataType: 'json',
 				success: function(data) {
-					// console.log(data);
-					document.getElementById("jurusan").value = "";
-					document.getElementById("jk").value = "";
+					console.log(data);
 					document.getElementById("username").value = "";
-					document.getElementById("gedung").value = "";
-					document.getElementById("kamar").value = "";
-					document.getElementById("no").value = "";
-					document.getElementById("alamat").value = "";
+					document.getElementById("tgl_izin").value = "";
+					document.getElementById("jam_izin").value = "";
+					document.getElementById("tgl_kembali").value = "";
+					document.getElementById("jam_kembali").value = "";
+					document.getElementById("keterangan").value = "";
 
 					ambil_data();
 
@@ -336,47 +355,31 @@
 		$('#myTable').DataTable({
 			destroy: true,
 			"ajax": {
-				"url": "<?php echo site_url("management_control/tampil") ?>",
+				"url": "<?php echo site_url("perizinan_control/tampil") ?>",
 				"dataSrc": ""
 			},
 			"columns": [{
 					"data": "username"
 				},
+				
 				{
-					"data": "jenis_kelamin",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == "0") {
-							return "Perempuan"
-						} else {
-							return "Laki-laki"
-						}
-					}
+					"data": "tgl_izin"
 				},
 				{
-					"data": "jurusan"
+					"data": "jam_izin"
 				},
 				{
-					"data": "gedung"
+					"data": "tgl_kembali"
 				},
 				{
-					"data": "kamar"
+					"data": "jam_kembali"
 				},
 				{
-					"data": "rule",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "Super Admin"
-						} else if (data == 1) {
-							return "Pengurus"
-						} else {
-							return "Warga"
-						}
-					}
+					"data": "keterangan"
 				},
+				
 				{
-					"data": "id_pengguna",
+					"data": "id_perizinan",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +

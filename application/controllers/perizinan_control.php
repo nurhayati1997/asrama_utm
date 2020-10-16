@@ -58,7 +58,7 @@ class perizinan_control extends CI_Controller
 
 	public function hapus()
 	{
-		echo json_encode($this->db_model->delete("pengguna", ['id_pengguna' => $this->input->post('id', TRUE)]));
+		echo json_encode($this->db_model->delete("perizinan", ['id_perizinan' => $this->input->post('id', TRUE)]));
 	}
 
 	public function get_username()

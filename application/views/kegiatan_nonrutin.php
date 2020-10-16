@@ -204,7 +204,7 @@
 			<div class="modal-header no-bd">
 				<h5 class="modal-title">
 					<span class="fw-mediumbold">
-						Hapus Data Master</span>
+						Hapus Data </span>
 					<span class="fw-light">
 						Kegiatan Non Rutin
 					</span>

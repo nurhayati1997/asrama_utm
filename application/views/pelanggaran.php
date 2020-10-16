@@ -104,19 +104,22 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="username">Nama</label>
-								<input type="text" class="form-control" id="username" placeholder="Username">
+								<input id="username" list="list_username" name="username" class="form-control" required>
+								<datalist id="list_username">
+
+								</datalist>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal</label>
-								<input type="date" class="form-control" id="username" placeholder="Username">
+								<label for="tanggal">Tanggal</label>
+								<input id="tanggal" type="date" class="form-control" >
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="jk">Jenis</label>
-								<select id="jk" class="form-control">
+								<label for="jenis">Jenis</label>
+								<select id="jenis" class="form-control">
 									<option value="0">RINGAN</option>
 									<option value="1">SEDANG</option>
 									<option value="2">BERAT</option>
@@ -125,8 +128,8 @@
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="username">Alasan</label>
-								<input type="text" class="form-control" id="username" placeholder="Alasan">
+								<label for="alasan">Alasan</label>
+								<input id="alasan" type="text" class="form-control"  placeholder="Alasan">
 							</div>
 						</div>
 					</div>
@@ -268,50 +271,56 @@
 
 		//datatabel
 		ambil_data();
+		get_username();
 	});
 
+	function get_username() {
+		$.ajax({
+			type: 'POST',
+			url: '<?= site_url() ?>pelanggaran_control/get_username',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data);
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
+					html += '<option value="' + data[i].id_pengguna + ' | ' + data[i].username + ' | ' + data[i].jurusan + '"></option>';
+				}
+				$("#list_username").html(html);
+			}
+		});
+	}
+
 	function tambah() {
-		if (document.getElementById("alamat").value == "") {
-			document.getElementById("alamat").focus();
+		if (document.getElementById("tanggal").value == "") {
+			document.getElementById("tanggal").focus();
 		}
-		if (document.getElementById("no").value == "") {
-			document.getElementById("no").focus();
+		if (document.getElementById("jenis").value == "") {
+			document.getElementById("jenis").focus();
 		}
-		if (document.getElementById("kamar").value == "") {
-			document.getElementById("kamar").focus();
-		}
-		if (document.getElementById("gedung").value == "") {
-			document.getElementById("gedung").focus();
-		}
-		if (document.getElementById("jurusan").value == "") {
-			document.getElementById("jurusan").focus();
-		}
-		if (document.getElementById("jk").value == "") {
-			document.getElementById("jk").focus();
+		if (document.getElementById("alasan").value == "") {
+			document.getElementById("alasan").focus();
 		}
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && document.getElementById("jk").value != "" && document.getElementById("jurusan").value != "" &&
-			document.getElementById("gedung").value != "" && document.getElementById("kamar").value != "" && document.getElementById("alamat").value != "" && document.getElementById("no").value != "") {
+		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("jenis").value != "" &&
+			document.getElementById("alasan").value != "" ) {
 			// console.log("sukses");
+			var pengguna = document.getElementById("username").value.split(' | ');
 			$.ajax({
 				type: 'POST',
-				data: 'tabel="pengguna"' + '&username=' + document.getElementById("username").value +
-					'&jk=' + document.getElementById("jk").value + '&jurusan=' + document.getElementById("jurusan").value +
-					'&gedung=' + document.getElementById("gedung").value + '&kamar=' + document.getElementById("kamar").value +
-					'&no=' + document.getElementById("no").value + '&alamat=' + document.getElementById("alamat").value,
-				url: '<?= base_url() ?>management_control/tambah',
+				data: 'tabel="pengguna"' + '&id='+ pengguna[0] +
+					'&tanggal=' + document.getElementById("tanggal").value + 
+					'&jenis=' + document.getElementById("jenis").value + 
+					'&alasan=' + document.getElementById("alasan").value,
+				url: '<?= base_url() ?>pelanggaran_control/tambah_data',
 				dataType: 'json',
 				success: function(data) {
-					// console.log(data);
-					document.getElementById("jurusan").value = "";
-					document.getElementById("jk").value = "";
+					console.log(data);
 					document.getElementById("username").value = "";
-					document.getElementById("gedung").value = "";
-					document.getElementById("kamar").value = "";
-					document.getElementById("no").value = "";
-					document.getElementById("alamat").value = "";
+					document.getElementById("tanggal").value = "";
+					document.getElementById("jenis").value = "";
+					document.getElementById("alasan").value = "";
 
 					ambil_data();
 
@@ -319,54 +328,39 @@
 				}
 			});
 		}
-		// console.log(document.getElementById("kode").value);
 	}
 
 	function ambil_data() {
 		$('#myTable').DataTable({
 			destroy: true,
 			"ajax": {
-				"url": "<?php echo site_url("management_control/tampil") ?>",
+				"url": "<?php echo site_url("pelanggaran_control/tampil") ?>",
 				"dataSrc": ""
 			},
 			"columns": [{
 					"data": "username"
 				},
 				{
-					"data": "jenis_kelamin",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == "0") {
-							return "Perempuan"
-						} else {
-							return "Laki-laki"
-						}
-					}
+					"data": "tanggal"
 				},
 				{
-					"data": "jurusan"
-				},
-				{
-					"data": "gedung"
-				},
-				{
-					"data": "kamar"
-				},
-				{
-					"data": "rule",
+					"data": "jenis",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						if (data == 0) {
-							return "Super Admin"
+							return "RINGAN"
 						} else if (data == 1) {
-							return "Pengurus"
+							return "SEDANG"
 						} else {
-							return "Warga"
+							return "BERAT"
 						}
 					}
 				},
 				{
-					"data": "id_pengguna",
+					"data": "alasan"
+				},
+				{
+					"data": "id_pelanggaran",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +

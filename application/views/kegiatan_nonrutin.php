@@ -162,13 +162,13 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Nama</label>
+								<label for="ubah_username">Nama</label>
 								<input id="ubah_username" name="username" class="form-control" readonly required>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="username">Tanggal</label>
+								<label for="ubah_tanggal">Tanggal</label>
 								<input type="date" class="form-control" id="ubah_tanggal" placeholder="Username">
 							</div>
 						</div>

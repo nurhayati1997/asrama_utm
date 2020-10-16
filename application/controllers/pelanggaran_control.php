@@ -38,28 +38,17 @@ class pelanggaran_control extends CI_Controller
 
 	function ubah_list()
 	{
-		echo json_encode($this->db_model->get_where('pengguna', ["id_pengguna" => $this->input->post('id', TRUE)])->result());
+		echo json_encode($this->db_model->get_where('v_pelanggaran', ["id_pelanggaran" => $this->input->post('id', TRUE)])->result());
 	}
 
 	public function ubah()
 	{
 		$data = [
-			"jurusan" => $this->input->post("jurusan", TRUE),
-			"jenis_kelamin" => $this->input->post("jk", TRUE),
-			"username" => $this->input->post("user", TRUE),
-			"gedung" => $this->input->post("gedung", TRUE),
-			"kamar" => $this->input->post("kamar", TRUE),
-			"no_hp" => $this->input->post("no", TRUE),
-			"alamat" => $this->input->post("alamat", TRUE)
+			"tanggal" => $this->input->post("tanggal", TRUE),
+			"jenis" => $this->input->post("jenis", TRUE),
+			"alasan" => $this->input->post("alasan", TRUE)
 		];
-		$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
-
-		if ($this->input->post("pass", TRUE) != "") {
-			$data = [
-				"password" => md5($this->input->post("pass", TRUE))
-			];
-			$this->db_model->update('pengguna', $data, array('id_pengguna' => $this->input->post('id', TRUE)));
-		}
+		$this->db_model->update('pelanggaran', $data, array('id_pelanggaran' => $this->input->post('id', TRUE)));
 		echo json_encode("");
 	}
 

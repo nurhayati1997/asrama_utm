@@ -359,8 +359,7 @@
 					document.getElementById("ubah_username").value = data[i].username;
 					document.getElementById("ubah_tanggal").value = data[i].tanggal;
 					document.getElementById("ubah_jk").value = data[i].jenis_kegiatan;
-					
-
+				
 					var html = '<button onclick="ubah(' + id + ')" id="ubah_button" type="button" data-dismiss="modal" class="btn btn-primary">Ubah</button>';
 					$("#ubahModal_tombol").html(html);
 

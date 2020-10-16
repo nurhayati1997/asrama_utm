@@ -88,7 +88,7 @@
 			<div class="modal-header no-bd">
 				<h5 class="modal-title">
 					<span class="fw-mediumbold">
-						Data Master</span>
+						Data </span>
 					<span class="fw-light">
 						Kegiatan Non Rutin
 					</span>

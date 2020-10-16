@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"data": "id_absensi_rutin",
+					"data": "id_kegiatan_nonrutin",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
 						var html = '<div class="form-button-action">' +

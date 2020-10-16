@@ -390,6 +390,7 @@
 			}
 		});
 	}
+	
 	function hapus_list(id) {
 		var html = '<button onclick="hapus(' + id + ')" id="hapus_button" type="button" data-dismiss="modal" class="btn btn-danger">Hapus</button>';
 		$("#hapusModal_tombol").html(html);

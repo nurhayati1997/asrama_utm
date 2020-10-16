@@ -207,9 +207,9 @@
 			<div class="modal-header no-bd">
 				<h5 class="modal-title">
 					<span class="fw-mediumbold">
-						Hapus Data Master</span>
+						Hapus Data </span>
 					<span class="fw-light">
-						Pengguna
+						Pelanggaran
 					</span>
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -409,7 +409,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/hapus',
+			url: '<?= base_url() ?>pelanggaran_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);

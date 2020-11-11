@@ -90,7 +90,7 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="<?= base_url() ?>assets/img/admin.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="<?= base_url() ?>assets/img/warga.png" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -123,7 +123,7 @@
 						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
-								<p>Management User</p>
+								<p>Warga</p>
 							</a>
 						</li>
 						<li class="nav-item">

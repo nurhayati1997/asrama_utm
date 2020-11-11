@@ -38,12 +38,47 @@
 									<thead>
 										<tr>
 											<th>NO</th>
-											<th>NIM</th>
+											<th>JENIS</th>
 											<th>NAMA</th>
+											<th>JURUSAN</th>
 											<th>SKORE</th>
 											<th>KEPUTUSAN</th>
 										</tr>
 									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>warga</td>
+											<td>halisa nabila</td>
+											<td>PBSI</td>
+											<td>0.725</td>
+											<td>TINGGAL</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>warga</td>
+											<td>irmawati</td>
+											<td>psikologi</td>
+											<td>0.120</td>
+											<td>KELUAR</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>pengurus</td>
+											<td>nur hayati</td>
+											<td>teknik industri</td>
+											<td>0.523</td>
+											<td>PERTIMBANGAN</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>warga</td>
+											<td>nina</td>
+											<td>teknik mesin</td>
+											<td>0.876</td>
+											<td>TINGGAL</td>
+										</tr>
+									</tbody>
 								</table>
 							</div>
 						</div>

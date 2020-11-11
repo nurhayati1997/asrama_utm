@@ -34,6 +34,7 @@ class absensi_rutin_control extends CI_Controller
 			"taklim" => $this->input->post("taklim", TRUE),
 			"isyak" => $this->input->post("isyak", TRUE),
 			"maghrib" => $this->input->post("maghrib", TRUE),
+			"kajian" => $this->input->post("kajian", TRUE),
 			"jam_malam" => $this->input->post("jam", TRUE)
 		];
 		$this->db_model->insert('absensi_rutin', $data);
@@ -53,6 +54,7 @@ class absensi_rutin_control extends CI_Controller
 			"subuh" => $this->input->post("subuh", TRUE),
 			"taklim" => $this->input->post("taklim", TRUE),
 			"isyak" => $this->input->post("isyak", TRUE),
+			"kajian" => $this->input->post("kajian", TRUE),
 			"maghrib" => $this->input->post("maghrib", TRUE),
 			"jam_malam" => $this->input->post("jam", TRUE)
 		];

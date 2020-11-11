@@ -163,6 +163,16 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
+								<label for="kajian">Kajian</label>
+								<select id="kajian" class="form-control">
+									<option value="0">ALFA</option>
+									<option value="1">IZIN</option>
+									<option value="2">HADIR</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
 								<label for="isyak">Isyak</label>
 								<select id="isyak" class="form-control">
 									<option value="0">ALFA</option>
@@ -266,6 +276,16 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
+								<label for="ubah_kajian">Kajian</label>
+								<select id="ubah_kajian" class="form-control">
+									<option value="0">ALFA</option>
+									<option value="1">IZIN</option>
+									<option value="2">HADIR</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
 								<label for="ubah_isyak">Isyak</label>
 								<select id="ubah_isyak" class="form-control">
 									<option value="0">ALFA</option>
@@ -357,6 +377,9 @@
 		if (document.getElementById("isyak").value == "") {
 			document.getElementById("isyak").focus();
 		}
+		if (document.getElementById("kajian").value == "") {
+			document.getElementById("kajian").focus();
+		}
 		if (document.getElementById("maghrib").value == "") {
 			document.getElementById("maghrib").focus();
 		}
@@ -385,7 +408,7 @@
 				data: 'tabel="pengguna"' + '&id=' + pengguna[0] +
 					'&tanggal=' + document.getElementById("tanggal").value + '&ql=' + document.getElementById("ql").value +
 					'&subuh=' + document.getElementById("subuh").value + '&taklim=' + document.getElementById("taklim").value +
-					'&jam=' + document.getElementById("jam").value +
+					'&jam=' + document.getElementById("jam").value + '&kajian=' + document.getElementById("kajian").value +
 					'&isyak=' + document.getElementById("isyak").value + '&maghrib=' + document.getElementById("maghrib").value,
 				url: '<?= base_url() ?>absensi_rutin_control/tambah',
 				dataType: 'json',
@@ -397,6 +420,7 @@
 					document.getElementById("subuh").value = "";
 					document.getElementById("taklim").value = "";
 					document.getElementById("isyak").value = "";
+					document.getElementById("kajian").value = "";
 					document.getElementById("maghrib").value = "";
 					document.getElementById("jam").value = "";
 
@@ -475,6 +499,19 @@
 					}
 				},
 				{
+					"data": "kajian",
+					"render": function(data, type, row) {
+						// Tampilkan kolom aksi
+						if (data == 0) {
+							return "ALFA"
+						} else if (data == 1) {
+							return "IZIN"
+						} else {
+							return "HADIR"
+						}
+					}
+				},
+				{
 					"data": "isyak",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
@@ -536,6 +573,7 @@
 					document.getElementById("ubah_subuh").value = data[i].subuh;
 					document.getElementById("ubah_taklim").value = data[i].taklim;
 					document.getElementById("ubah_isyak").value = data[i].isyak;
+					document.getElementById("ubah_kajian").value = data[i].kajian;
 					document.getElementById("ubah_maghrib").value = data[i].maghrib;
 					document.getElementById("ubah_jam").value = data[i].jam_malam;
 
@@ -560,6 +598,7 @@
 			data: 'id=' + id + '&tanggal=' + document.getElementById("ubah_tanggal").value +
 				'&ql=' + document.getElementById("ubah_ql").value + '&subuh=' + document.getElementById("ubah_subuh").value +
 				'&taklim=' + document.getElementById("ubah_taklim").value + '&isyak=' + document.getElementById("ubah_isyak").value +
+				'&kajian=' + document.getElementById("ubah_kajian").value +
 				'&maghrib=' + document.getElementById("ubah_maghrib").value + '&jam=' + document.getElementById("ubah_jam").value,
 			url: '<?= base_url() ?>absensi_rutin_control/ubah',
 			dataType: 'json',
@@ -589,7 +628,7 @@
 		$.ajax({
 			type: 'POST',
 			data: 'id=' + id,
-			url: '<?= base_url() ?>management_control/hapus',
+			url: '<?= base_url() ?>absensi_rutin_control/hapus',
 			dataType: 'json',
 			success: function(data) {
 				// console.log(data);

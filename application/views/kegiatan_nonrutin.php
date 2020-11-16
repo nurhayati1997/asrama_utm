@@ -174,7 +174,6 @@
 				</button>
 			</div>
 			<div class="modal-body">
-			<div class="modal-body">
 				<form>
 					<div class="row">
 						<div class="col-sm-6">

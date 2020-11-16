@@ -41,6 +41,16 @@ class absensi_rutin_control extends CI_Controller
 		echo json_encode($data);
 	}
 
+	public function get_username()
+	{
+		// echo json_encode("yey");
+		if ($this->session->userdata("rule") == 0) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 1, 'hapus' => 0))->result());
+		} else if ($this->session->userdata("rule") == 1) {
+			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
+		}
+	}
+
 	function ubah_list()
 	{
 		echo json_encode($this->db_model->get_where('v_absensi_rutin', ["id_absensi_rutin" => $this->input->post('id', TRUE)])->result());
@@ -68,13 +78,5 @@ class absensi_rutin_control extends CI_Controller
 		echo json_encode($this->db_model->delete("absensi_rutin", ['id_absensi_rutin' => $this->input->post('id', TRUE)]));
 	}
 
-	public function get_username()
-	{
-		// echo json_encode("yey");
-		if ($this->session->userdata("rule") == 0) {
-			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 1, 'hapus' => 0))->result());
-		} else if ($this->session->userdata("rule") == 1) {
-			echo json_encode($this->db_model->get_where('pengguna', array('rule' => 2, 'hapus' => 0))->result());
-		}
-	}
+	
 }

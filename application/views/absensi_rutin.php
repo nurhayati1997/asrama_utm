@@ -398,8 +398,7 @@
 		if (document.getElementById("username").value == "") {
 			document.getElementById("username").focus();
 		}
-		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("ql").value != "" && document.getElementById("jam").value != "" &&
-			document.getElementById("subuh").value != "" && document.getElementById("taklim").value != "" && document.getElementById("maghrib").value != "" && document.getElementById("isyak").value != "") {
+		if (document.getElementById("username").value != "" && document.getElementById("tanggal").value != "" && document.getElementById("ql").value != "" && document.getElementById("jam").value != "" && document.getElementById("subuh").value != "" && document.getElementById("taklim").value != "" && document.getElementById("maghrib").value != "" && document.getElementById("kajian").value != "" && document.getElementById("isyak").value != "") {
 			// console.log("sukses");
 			var pengguna = document.getElementById("username").value.split(' | ');
 

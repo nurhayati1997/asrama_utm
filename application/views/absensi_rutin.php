@@ -72,6 +72,7 @@
 											<th>Subuh</th>
 											<th>Taklim</th>
 											<th>Maghrib</th>
+											<th>Kajian</th>
 											<th>Isyak</th>
 											<th>Jam Malam</th>
 											<th style="width: 10%">AKSI</th>

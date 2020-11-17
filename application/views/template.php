@@ -123,7 +123,7 @@
 						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
-								<p>Warga</p>
+								<p>Management User</p>
 							</a>
 						</li>
 						<li class="nav-item">

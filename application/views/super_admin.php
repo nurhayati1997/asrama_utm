@@ -26,7 +26,7 @@
 					</div>
 					<div class="card-body">
 						<div class="user-profile text-center">
-							<div class="name">Berikut Adalah data Warga anda</div>
+							<div class="name">Berikut Adalah data pengguna</div>
 							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data

@@ -23,6 +23,8 @@ class pengaduan_control extends CI_Controller
 			echo json_encode($this->db_model->get_all("v_pengaduan")->result());
 		} else if ($this->session->userdata("rule") == 1) {
 			echo json_encode($this->db_model->get_where('v_pengaduan', array('rule' => 2, 'penanggung_jawab' => $this->session->userdata("id_pengguna")))->result());
+		} else{
+			echo json_encode($this->db_model->get_where('v_pengaduan', array('id_pengguna' => $this->session->userdata("id_pengguna")))->result());
 		}
 	}
 

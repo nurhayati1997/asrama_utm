@@ -27,7 +27,7 @@
 					<div class="card-body">
 						<div class="user-profile text-center">
 							<div class="name">Pengaduan</div>
-							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+							<button id="button_hide" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
 								Tambah Data
 							</button>
@@ -260,6 +260,10 @@
 			});
 		});
 
+		if(rules == 0){
+			document.getElementById("button_hide").style.visibility ="hidden"; 
+			document.getElementById("button_hide").style.display = "none";
+		}
 		//datatabel
 		ambil_data();
 		get_username();
@@ -353,7 +357,7 @@
 					"data": "id_catatan_to_asrama",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
-						if(rules == 2){
+						if(rules != 0){
 							var html = '<div class="form-button-action">' +
 							'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
 							'<i class="fa fa-edit"></i>' +

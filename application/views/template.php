@@ -123,7 +123,7 @@
 						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
-								<p id="menu_access">Manajemen Pengguna</p>
+								<p id="menu_access">Management User</p>
 							</a>
 						</li>
 						<li class="nav-item warga_hidden">
@@ -417,7 +417,7 @@
 	<script>
 		$(document).ready(function() {
 			if (<?php echo $this->session->userdata("rule") ?> == 1) {
-				$("#menu_access").html("Manajemen Warga");
+				$("#menu_access").html("WARGA");
 			}
 			
 

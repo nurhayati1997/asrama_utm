@@ -251,6 +251,7 @@
 </div>
 
 <script>
+	var rules = <?php echo $this->session->userdata("rule") ?>;
 	$(document).ready(function() {
 		// $("#success-alert").hide();
 		$("#tambah_button").click(function showAlert() {
@@ -352,13 +353,18 @@
 					"data": "id_catatan_to_asrama",
 					"render": function(data, type, row) {
 						// Tampilkan kolom aksi
-						var html = '<div class="form-button-action">' +
+						if(rules == 2){
+							var html = '<div class="form-button-action">' +
 							'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
 							'<i class="fa fa-edit"></i>' +
 							'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
 							'<i class="fa fa-times"></i>' +
 							'</button>' +
 							'</div>';
+						}else{
+							var html ="";
+						}
+						
 
 						return html
 					}

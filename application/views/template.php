@@ -123,10 +123,10 @@
 						<li class="nav-item warga_hidden">
 							<a href="<?= site_url('management_control') ?>">
 								<i class="fas fa-th-list"></i>
-								<p>Management User</p>
+								<p id="menu_access">Manajemen Pengguna</p>
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item warga_hidden">
 							<a data-toggle="collapse" href="#monitoring">
 								<i class="fas fa-desktop"></i>
 								<p>Monitoring</p>
@@ -134,7 +134,7 @@
 							</a>
 							<div class="collapse" id="monitoring">
 								<ul class="nav nav-collapse">
-									<li class="warga_hidden">
+									<li>
 										<a href="<?= site_url('absensi_rutin_control') ?>">
 											<span class="sub-item">Absensi Rutin</span>
 										</a>
@@ -149,12 +149,12 @@
 											<span class="sub-item">Perizinan</span>
 										</a>
 									</li>
-									<li class="warga_hidden">
+									<li>
 										<a href="<?= site_url('pelanggaran_control') ?>">
 											<span class="sub-item">Pelanggaran</span>
 										</a>
 									</li>
-									<li class="warga_hidden">
+									<li>
 										<a href="<?= site_url('catatan_control') ?>">
 											<span class="sub-item">Catatan</span>
 										</a>
@@ -180,7 +180,7 @@
 							</span>
 							<h4 class="text-section">Penilaian</h4>
 						</li>
-						<li class="nav-item warga_hidden">
+						<li class="nav-item">
 							<a href="<?= site_url('evaluasi_control') ?>">
 								<i class="fas fa-exclamation-triangle"></i>
 								<p>Evaluasi</p>
@@ -416,6 +416,10 @@
 	</script>
 	<script>
 		$(document).ready(function() {
+			if (<?php echo $this->session->userdata("rule") ?> == 1) {
+				$("#menu_access").html("Manajemen Warga");
+			}
+			
 
 			// $('#basic-datatables').DataTable({});
 

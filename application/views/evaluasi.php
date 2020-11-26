@@ -90,9 +90,9 @@
 				{
 					"data": "skor",
 					"render": function(data, type, row) {
-						if (data > 0.3) {
+						if (data >= 0.3 && data <= 0.6) {
 							return "PERTIMBANGAN"
-						} else if (data > 0.6) {
+						} else if (data >= 0.6) {
 							return "TINGGAL"
 						} else {
 							return "KELUAR"

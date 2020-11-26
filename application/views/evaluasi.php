@@ -37,48 +37,13 @@
 								<table id="myTable" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>NO</th>
-											<th>JENIS</th>
 											<th>NAMA</th>
+											<th>JENIS</th>
 											<th>JURUSAN</th>
 											<th>SKORE</th>
 											<th>KEPUTUSAN</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>warga</td>
-											<td>halisa nabila</td>
-											<td>PBSI</td>
-											<td>0.725</td>
-											<td>TINGGAL</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>warga</td>
-											<td>irmawati</td>
-											<td>psikologi</td>
-											<td>0.120</td>
-											<td>KELUAR</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>pengurus</td>
-											<td>nur hayati</td>
-											<td>teknik industri</td>
-											<td>0.523</td>
-											<td>PERTIMBANGAN</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>warga</td>
-											<td>nina</td>
-											<td>teknik mesin</td>
-											<td>0.876</td>
-											<td>TINGGAL</td>
-										</tr>
-									</tbody>
 								</table>
 							</div>
 						</div>
@@ -91,115 +56,48 @@
 
 <script>
 	$(document).ready(function() {
-		// ambil_data();
+		ambil_data();
 	});
 
 	function ambil_data() {
 		$('#myTable').DataTable({
 			destroy: true,
 			"ajax": {
-				"url": "<?php echo site_url("absensi_rutin_control/tampil") ?>",
+				"url": "<?php echo site_url("evaluasi_control/tampil") ?>",
 				"dataSrc": ""
 			},
 			"columns": [{
 					"data": "username"
 				},
 				{
-					"data": "tanggal"
-				},
-				{
-					"data": "qiyamul_lail",
+					"data": "rule",
 					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
 						if (data == 0) {
-							return "ALFA"
+							return "ADMINISTRATOR"
 						} else if (data == 1) {
-							return "IZIN"
+							return "PENGURUS"
 						} else {
-							return "HADIR"
+							return "WARGA"
 						}
 					}
 				},
 				{
-					"data": "subuh",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "ALFA"
-						} else if (data == 1) {
-							return "IZIN"
-						} else {
-							return "HADIR"
-						}
-					}
+					"data": "jurusan"
 				},
 				{
-					"data": "taklim",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "ALFA"
-						} else if (data == 1) {
-							return "IZIN"
-						} else {
-							return "HADIR"
-						}
-					}
+					"data": "skor"
 				},
 				{
-					"data": "maghrib",
+					"data": "skor",
 					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "ALFA"
-						} else if (data == 1) {
-							return "IZIN"
+						if (data > 0.3) {
+							return "PERTIMBANGAN"
+						} else if (data > 0.6) {
+							return "TINGGAL"
 						} else {
-							return "HADIR"
+							return "KELUAR"
 						}
 					}
-				},
-				{
-					"data": "isyak",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "ALFA"
-						} else if (data == 1) {
-							return "IZIN"
-						} else {
-							return "HADIR"
-						}
-					}
-				},
-				{
-					"data": "jam_malam",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						if (data == 0) {
-							return "TELAT"
-						} else if (data == 1) {
-							return "IZIN"
-						} else {
-							return "ON TIME"
-						}
-					}
-				},
-				{
-					"data": "id_absensi_rutin",
-					"render": function(data, type, row) {
-						// Tampilkan kolom aksi
-						var html = '<div class="form-button-action">' +
-							'<button onclick="ubah_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">' +
-							'<i class="fa fa-edit"></i>' +
-							'</button>' + '<button onclick="hapus_list(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">' +
-							'<i class="fa fa-times"></i>' +
-							'</button>' +
-							'</div>';
-
-						return html
-					}
-
 				}
 			]
 		});
